@@ -11,16 +11,12 @@ var path = require('path')
 
 gulp.task('css', function(){
     return gulp.src(
+
             [
-                './public/css/bootstrap.css',
-                './public/css/style.css',
-                './public/css/swiper.css',
-                './public/css/dark.css',
-                './public/css/font-icons.css',
-                './public/css/animate.css',
-                './public/css/magnific-popup.css',
-                './public/css/responsive.css',
-                './public/css/custom.css'
+                './public/css/bootstrap.min.css',
+                './public/css/animate.min.css',
+                './public/css/paper-dashboard.css',
+                './public/css/demo.css'
             ]
         )
         .pipe(minifyCSS())
@@ -41,11 +37,15 @@ gulp.task('style', ['css', 'copy-fonts'], function(){})
 
 gulp.task('js', function(){
     return gulp.src(
+
             [
-                './public/js/jquery.js',
-                './public/js/plugins.js',
-                './public/js/functions.js',
-                './public/js/custom.js'
+                './public/js/jquery-1.10.2.js',
+                './public/js/bootstrap.min.js',
+                './public/js/bootstrap-checkbox-radio.js',
+                './public/js/chartist.min.js',
+                './public/js/bootstrap-notify.js',
+                './public/js/paper-dashboard.js',
+                './public/js/demo.js',
             ]
         )
         .pipe(gp_concat('vendor.min.js'))
