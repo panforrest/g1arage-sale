@@ -1888,7 +1888,698 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = _react2.default.createElement(
 	_reactRedux.Provider,
 	{ store: _stores2.default.configure(null) },
-	_react2.default.createElement(_Intro2.default, null)
+	_react2.default.createElement(
+		'div',
+		{ className: 'wrapper' },
+		_react2.default.createElement(
+			'div',
+			{ className: 'sidebar', 'data-background-color': 'white', 'data-active-color': 'danger' },
+			_react2.default.createElement(
+				'div',
+				{ className: 'sidebar-wrapper' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'logo' },
+					_react2.default.createElement(
+						'a',
+						{ href: 'http://www.creative-tim.com', className: 'simple-text' },
+						'Creative Tim'
+					)
+				),
+				_react2.default.createElement(
+					'ul',
+					{ className: 'nav' },
+					_react2.default.createElement(
+						'li',
+						{ className: 'active' },
+						_react2.default.createElement(
+							'a',
+							{ href: 'dashboard.html' },
+							_react2.default.createElement('i', { className: 'ti-panel' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Dashboard'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: 'user.html' },
+							_react2.default.createElement('i', { className: 'ti-user' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'User Profile'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: 'table.html' },
+							_react2.default.createElement('i', { className: 'ti-view-list-alt' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Table List'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: 'typography.html' },
+							_react2.default.createElement('i', { className: 'ti-text' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Typography'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: 'icons.html' },
+							_react2.default.createElement('i', { className: 'ti-pencil-alt2' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Icons'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: 'maps.html' },
+							_react2.default.createElement('i', { className: 'ti-map' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Maps'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: 'notifications.html' },
+							_react2.default.createElement('i', { className: 'ti-bell' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Notifications'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'active-pro' },
+						_react2.default.createElement(
+							'a',
+							{ href: 'upgrade.html' },
+							_react2.default.createElement('i', { className: 'ti-export' }),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Upgrade to PRO'
+							)
+						)
+					)
+				)
+			)
+		),
+		_react2.default.createElement(
+			'div',
+			{ className: 'main-panel' },
+			_react2.default.createElement(
+				'nav',
+				{ className: 'navbar navbar-default' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'navbar-header' },
+						_react2.default.createElement(
+							'button',
+							{ type: 'button', className: 'navbar-toggle' },
+							_react2.default.createElement(
+								'span',
+								{ className: 'sr-only' },
+								'Toggle navigation'
+							),
+							_react2.default.createElement('span', { className: 'icon-bar bar1' }),
+							_react2.default.createElement('span', { className: 'icon-bar bar2' }),
+							_react2.default.createElement('span', { className: 'icon-bar bar3' })
+						),
+						_react2.default.createElement(
+							'a',
+							{ className: 'navbar-brand', href: '#' },
+							'Dashboard'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'collapse navbar-collapse' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'nav navbar-nav navbar-right' },
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
+									_react2.default.createElement('i', { className: 'ti-panel' }),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Stats'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								{ className: 'dropdown' },
+								_react2.default.createElement(
+									'a',
+									{ href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
+									_react2.default.createElement('i', { className: 'ti-bell' }),
+									_react2.default.createElement(
+										'p',
+										{ className: 'notification' },
+										'5'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Notifications'
+									),
+									_react2.default.createElement('b', { className: 'caret' })
+								),
+								_react2.default.createElement(
+									'ul',
+									{ className: 'dropdown-menu' },
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 1'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 2'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 3'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 4'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Another notification'
+										)
+									)
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'ti-settings' }),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Settings'
+									)
+								)
+							)
+						)
+					)
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'content' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-lg-3 col-sm-6' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'row' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-5' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'icon-big icon-warning text-center' },
+												_react2.default.createElement('i', { className: 'ti-server' })
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-7' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'numbers' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Capacity'
+												),
+												'105GB'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-reload' }),
+											' Updated now'
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-lg-3 col-sm-6' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'row' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-5' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'icon-big icon-success text-center' },
+												_react2.default.createElement('i', { className: 'ti-wallet' })
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-7' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'numbers' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Revenue'
+												),
+												'$1,345'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-calendar' }),
+											' Last day'
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-lg-3 col-sm-6' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'row' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-5' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'icon-big icon-danger text-center' },
+												_react2.default.createElement('i', { className: 'ti-pulse' })
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-7' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'numbers' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Errors'
+												),
+												'23'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-timer' }),
+											' In the last hour'
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-lg-3 col-sm-6' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'row' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-5' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'icon-big icon-info text-center' },
+												_react2.default.createElement('i', { className: 'ti-twitter-alt' })
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'col-xs-7' },
+											_react2.default.createElement(
+												'div',
+												{ className: 'numbers' },
+												_react2.default.createElement(
+													'p',
+													null,
+													'Followers'
+												),
+												'+45'
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-reload' }),
+											' Updated now'
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-12' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'header' },
+									_react2.default.createElement(
+										'h4',
+										{ className: 'title' },
+										'Users Behavior'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'category' },
+										'24 Hours performance'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement('div', { id: 'chartHours', className: 'ct-chart' }),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'chart-legend' },
+											_react2.default.createElement('i', { className: 'fa fa-circle text-info' }),
+											' Open',
+											_react2.default.createElement('i', { className: 'fa fa-circle text-danger' }),
+											' Click',
+											_react2.default.createElement('i', { className: 'fa fa-circle text-warning' }),
+											' Click Second Time'
+										),
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-reload' }),
+											' Updated 3 minutes ago'
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-6' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'header' },
+									_react2.default.createElement(
+										'h4',
+										{ className: 'title' },
+										'Email Statistics'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'category' },
+										'Last Campaign Performance'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement('div', { id: 'chartPreferences', className: 'ct-chart ct-perfect-fourth' }),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'chart-legend' },
+											_react2.default.createElement('i', { className: 'fa fa-circle text-info' }),
+											' Open',
+											_react2.default.createElement('i', { className: 'fa fa-circle text-danger' }),
+											' Bounce',
+											_react2.default.createElement('i', { className: 'fa fa-circle text-warning' }),
+											' Unsubscribe'
+										),
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-timer' }),
+											' Campaign sent 2 days ago'
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-6' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'card ' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'header' },
+									_react2.default.createElement(
+										'h4',
+										{ className: 'title' },
+										'2015 Sales'
+									),
+									_react2.default.createElement(
+										'p',
+										{ className: 'category' },
+										'All products including Taxes'
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'content' },
+									_react2.default.createElement('div', { id: 'chartActivity', className: 'ct-chart' }),
+									_react2.default.createElement(
+										'div',
+										{ className: 'footer' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'chart-legend' },
+											_react2.default.createElement('i', { className: 'fa fa-circle text-info' }),
+											' Tesla Model S',
+											_react2.default.createElement('i', { className: 'fa fa-circle text-warning' }),
+											' BMW 5 Series'
+										),
+										_react2.default.createElement('hr', null),
+										_react2.default.createElement(
+											'div',
+											{ className: 'stats' },
+											_react2.default.createElement('i', { className: 'ti-check' }),
+											' Data information certified'
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			),
+			_react2.default.createElement(
+				'footer',
+				{ className: 'footer' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					_react2.default.createElement(
+						'nav',
+						{ className: 'pull-left' },
+						_react2.default.createElement(
+							'ul',
+							null,
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: 'http://www.creative-tim.com' },
+									'Creative Tim'
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: 'http://blog.creative-tim.com' },
+									'Blog'
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: 'http://www.creative-tim.com/license' },
+									'Licenses'
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'copyright pull-right' },
+						'\xA9 2017, made with ',
+						_react2.default.createElement('i', { className: 'fa fa-heart heart' }),
+						' by ',
+						_react2.default.createElement(
+							'a',
+							{ href: 'http://www.creative-tim.com' },
+							'Creative Tim'
+						)
+					)
+				)
+			)
+		)
+	)
 );
 
 _reactDom2.default.render(app, document.getElementById('root'));

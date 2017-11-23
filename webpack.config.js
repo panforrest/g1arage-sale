@@ -13,6 +13,8 @@ module.exports = {
 		path: __dirname+'/public/dist',
 		filename: 'bundle/[name].js',
         sourceMapFilename: 'bundle/[name].map'
+        // filename: 'bundle/app.js',
+        // sourceMapFilename: 'bundle/app.map'
 	},
 	node: {
 		fs: 'empty'
