@@ -8,6 +8,7 @@ var gp_uglify = require('gulp-uglify')
 // var less = require('gulp-less')
 var to5 = require('gulp-6to5')
 var path = require('path')
+var sass = require('gulp-sass')
 
 gulp.task('css', function(){
     return gulp.src(
@@ -23,6 +24,12 @@ gulp.task('css', function(){
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
         .pipe(gp_concat('style.min.css'))
         .pipe(gulp.dest('./public/dist/css/'))
+})
+
+gulp.task('sass', function(){
+  return gulp.src('./public/sass/paper-dashboard.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./public/css'));
 })
 
 gulp.task('copy-fonts', function(){
