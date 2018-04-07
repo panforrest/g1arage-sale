@@ -10,7 +10,7 @@ var to5 = require('gulp-6to5')
 var path = require('path')
 var sass = require('gulp-sass')
 
-gulp.task('css', function(){
+gulp.task('css', ['sass'], function(){
     return gulp.src(
 
             [

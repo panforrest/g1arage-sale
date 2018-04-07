@@ -1871,9 +1871,9 @@ var _stores2 = _interopRequireDefault(_stores);
 
 var _reactRedux = __webpack_require__(60);
 
-var _Intro = __webpack_require__(74);
+var _Home = __webpack_require__(74);
 
-var _Intro2 = _interopRequireDefault(_Intro);
+var _Home2 = _interopRequireDefault(_Home);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1888,420 +1888,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = _react2.default.createElement(
 	_reactRedux.Provider,
 	{ store: _stores2.default.configure(null) },
-	_react2.default.createElement(
-		'div',
-		{ className: 'wrapper' },
-		_react2.default.createElement(
-			'div',
-			{ className: 'sidebar', 'data-background-color': 'white', 'data-active-color': 'danger' },
-			_react2.default.createElement('div', { className: 'sidebar-wrapper' })
-		),
-		_react2.default.createElement(
-			'div',
-			{ className: 'main-panel' },
-			_react2.default.createElement(
-				'nav',
-				{ className: 'navbar navbar-default' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'navbar-header' },
-						_react2.default.createElement(
-							'button',
-							{ type: 'button', className: 'navbar-toggle' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'sr-only' },
-								'Toggle navigation'
-							),
-							_react2.default.createElement('span', { className: 'icon-bar bar1' }),
-							_react2.default.createElement('span', { className: 'icon-bar bar2' }),
-							_react2.default.createElement('span', { className: 'icon-bar bar3' })
-						),
-						_react2.default.createElement(
-							'a',
-							{ className: 'navbar-brand', href: '#' },
-							'Dashboard'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'collapse navbar-collapse' },
-						_react2.default.createElement(
-							'ul',
-							{ className: 'nav navbar-nav navbar-right' },
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
-									_react2.default.createElement('i', { className: 'ti-panel' }),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Stats'
-									)
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								{ className: 'dropdown' },
-								_react2.default.createElement(
-									'a',
-									{ href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
-									_react2.default.createElement('i', { className: 'ti-bell' }),
-									_react2.default.createElement(
-										'p',
-										{ className: 'notification' },
-										'5'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Notifications'
-									),
-									_react2.default.createElement('b', { className: 'caret' })
-								),
-								_react2.default.createElement(
-									'ul',
-									{ className: 'dropdown-menu' },
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											'Notification 1'
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											'Notification 2'
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											'Notification 3'
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											'Notification 4'
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											'Another notification'
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('i', { className: 'ti-settings' }),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Settings'
-									)
-								)
-							)
-						)
-					)
-				)
-			),
-			_react2.default.createElement(
-				'div',
-				{ className: 'content' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-lg-3 col-sm-6' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'card' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'content' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'row' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-5' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'icon-big icon-warning text-center' },
-												_react2.default.createElement('i', { className: 'ti-server' })
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-7' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'numbers' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Capacity'
-												),
-												'105GB'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'footer' },
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'div',
-											{ className: 'stats' },
-											_react2.default.createElement('i', { className: 'ti-reload' }),
-											' Updated now'
-										)
-									)
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-lg-3 col-sm-6' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'card' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'content' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'row' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-5' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'icon-big icon-success text-center' },
-												_react2.default.createElement('i', { className: 'ti-wallet' })
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-7' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'numbers' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Revenue'
-												),
-												'$1,345'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'footer' },
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'div',
-											{ className: 'stats' },
-											_react2.default.createElement('i', { className: 'ti-calendar' }),
-											' Last day'
-										)
-									)
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-lg-3 col-sm-6' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'card' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'content' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'row' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-5' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'icon-big icon-danger text-center' },
-												_react2.default.createElement('i', { className: 'ti-pulse' })
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-7' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'numbers' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Errors'
-												),
-												'23'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'footer' },
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'div',
-											{ className: 'stats' },
-											_react2.default.createElement('i', { className: 'ti-timer' }),
-											' In the last hour'
-										)
-									)
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-lg-3 col-sm-6' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'card' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'content' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'row' },
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-5' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'icon-big icon-info text-center' },
-												_react2.default.createElement('i', { className: 'ti-twitter-alt' })
-											)
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'col-xs-7' },
-											_react2.default.createElement(
-												'div',
-												{ className: 'numbers' },
-												_react2.default.createElement(
-													'p',
-													null,
-													'Followers'
-												),
-												'+45'
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'footer' },
-										_react2.default.createElement('hr', null),
-										_react2.default.createElement(
-											'div',
-											{ className: 'stats' },
-											_react2.default.createElement('i', { className: 'ti-reload' }),
-											' Updated now'
-										)
-									)
-								)
-							)
-						)
-					)
-				)
-			),
-			_react2.default.createElement(
-				'footer',
-				{ className: 'footer' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					_react2.default.createElement(
-						'nav',
-						{ className: 'pull-left' },
-						_react2.default.createElement(
-							'ul',
-							null,
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: 'http://www.creative-tim.com' },
-									'Creative Tim'
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: 'http://blog.creative-tim.com' },
-									'Blog'
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement(
-									'a',
-									{ href: 'http://www.creative-tim.com/license' },
-									'Licenses'
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'copyright pull-right' },
-						'\xA9 2017, made with ',
-						_react2.default.createElement('i', { className: 'fa fa-heart heart' }),
-						' by ',
-						_react2.default.createElement(
-							'a',
-							{ href: 'http://www.creative-tim.com' },
-							'Creative Tim'
-						)
-					)
-				)
-			)
-		)
-	)
+	_react2.default.createElement(_Home2.default, null)
 );
 
 _reactDom2.default.render(app, document.getElementById('root'));
@@ -21706,8 +21293,10 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+								value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(2);
 
@@ -21715,207 +21304,445 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (props) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	return _react2.default.createElement(
-		"div",
-		{ className: "row" },
-		_react2.default.createElement(
-			"div",
-			{ className: "col-md-6 col-md-offset-3", style: { textAlign: 'center', marginBottom: 48 } },
-			_react2.default.createElement(
-				"h1",
-				null,
-				"Welcome to Turbo"
-			),
-			_react2.default.createElement("hr", null),
-			_react2.default.createElement(
-				"div",
-				{ style: { background: '#f9f9f9', border: '1px solid #ddd', borderRadius: 3, padding: 12 } },
-				"You are currently looking at the ",
-				_react2.default.createElement(
-					"strong",
-					{ style: { color: 'red' } },
-					"Intro.js"
-				),
-				" file in the '/src/components/presentation' directory of your project. This template is rendered with the Mustache templating engine."
-			),
-			_react2.default.createElement(
-				"h3",
-				{ style: { marginTop: 48 } },
-				"Routes"
-			),
-			_react2.default.createElement("hr", null),
-			_react2.default.createElement(
-				"p",
-				null,
-				"The routes are stored in the 'routes' directory. This scaffold comes with two sample routes out of the box: index and api. To test each route, click the following links:"
-			),
-			_react2.default.createElement(
-				"div",
-				{ className: "row" },
-				_react2.default.createElement(
-					"div",
-					{ className: "col-md-6 col-md-offset-0" },
-					_react2.default.createElement(
-						"div",
-						{ style: localStyle.grayBox },
-						_react2.default.createElement(
-							"h4",
-							null,
-							"Index Route"
-						),
-						_react2.default.createElement(
-							"ul",
-							{ style: { paddingLeft: 16 } },
-							_react2.default.createElement(
-								"li",
-								null,
-								_react2.default.createElement(
-									"a",
-									{ href: "/json" },
-									"JSON Response"
-								)
-							),
-							_react2.default.createElement(
-								"li",
-								null,
-								_react2.default.createElement(
-									"a",
-									{ href: "/send" },
-									"Text Response"
-								)
-							),
-							_react2.default.createElement(
-								"li",
-								null,
-								_react2.default.createElement(
-									"a",
-									{ href: "/redirect" },
-									"Redirect"
-								)
-							)
-						)
-					)
-				),
-				_react2.default.createElement(
-					"div",
-					{ className: "col-md-6" },
-					_react2.default.createElement(
-						"div",
-						{ style: localStyle.grayBox },
-						_react2.default.createElement(
-							"h4",
-							null,
-							"API Route"
-						),
-						_react2.default.createElement(
-							"ul",
-							{ style: { paddingLeft: 16 } },
-							_react2.default.createElement(
-								"li",
-								null,
-								_react2.default.createElement(
-									"a",
-									{ href: "/api/profile" },
-									"Resource Request"
-								)
-							),
-							_react2.default.createElement(
-								"li",
-								null,
-								_react2.default.createElement(
-									"a",
-									{ href: "/api/profile?team=cavaliers" },
-									"With Query Params"
-								)
-							),
-							_react2.default.createElement(
-								"li",
-								null,
-								_react2.default.createElement(
-									"a",
-									{ href: "/api/profile/lebron_james" },
-									"With ID"
-								)
-							)
-						)
-					)
-				)
-			),
-			_react2.default.createElement(
-				"h3",
-				{ style: { marginTop: 48 } },
-				"Static Assets"
-			),
-			_react2.default.createElement("hr", null),
-			_react2.default.createElement(
-				"p",
-				null,
-				"Static assets (images, js, css, etc) are located in the \"public\" directory. The image below is rendered from the 'images' directory of the public folder:",
-				_react2.default.createElement("br", null),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement("img", { src: "/images/turbo.png" }),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement("br", null),
-				"When deployed on Turbo Vertex, static assets are ",
-				_react2.default.createElement(
-					"em",
-					null,
-					"automatically"
-				),
-				" distributed to a global CDN so there is no need to set that up. If you decide to eject and deploy this project on your own architecture, you will have to configure a CDN distribution (or at least you should)."
-			),
-			_react2.default.createElement(
-				"h3",
-				{ style: { marginTop: 48 } },
-				"Deployment"
-			),
-			_react2.default.createElement("hr", null),
-			_react2.default.createElement(
-				"p",
-				null,
-				"To deploy, connect the project to a Turbo 360 project using the APP_ID (from root directory):",
-				_react2.default.createElement(
-					"pre",
-					{ style: localStyle.pre },
-					_react2.default.createElement(
-						"code",
-						null,
-						"$ turbo app APP_ID"
-					)
-				),
-				"Then deploy by simply entering the deploy command:",
-				_react2.default.createElement(
-					"pre",
-					{ style: localStyle.pre },
-					_react2.default.createElement(
-						"code",
-						null,
-						"$ turbo deploy"
-					)
-				),
-				"When deployment is complete, you will see a live link where you can access the project on the internet!"
-			)
-		)
-	);
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-var localStyle = {
-	grayBox: {
-		textAlign: 'left',
-		background: '#f9f9f9',
-		border: '1px solid #ddd',
-		borderRadius: 3,
-		padding: 12
-	},
-	pre: {
-		textAlign: 'left',
-		marginTop: 8,
-		background: '#333',
-		color: '#fff'
-	}
-};
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_Component) {
+								_inherits(Home, _Component);
+
+								function Home() {
+																_classCallCheck(this, Home);
+
+																return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+								}
+
+								_createClass(Home, [{
+																key: "render",
+																value: function render() {
+																								return _react2.default.createElement(
+																																"div",
+																																{ className: "wrapper" },
+																																_react2.default.createElement(
+																																								"div",
+																																								{ className: "sidebar", "data-background-color": "white", "data-active-color": "danger" },
+																																								_react2.default.createElement("div", { className: "sidebar-wrapper" })
+																																),
+																																_react2.default.createElement(
+																																								"div",
+																																								{ className: "main-panel" },
+																																								_react2.default.createElement(
+																																																"nav",
+																																																{ className: "navbar navbar-default" },
+																																																_react2.default.createElement(
+																																																								"div",
+																																																								{ className: "container-fluid" },
+																																																								_react2.default.createElement(
+																																																																"div",
+																																																																{ className: "navbar-header" },
+																																																																_react2.default.createElement(
+																																																																								"button",
+																																																																								{ type: "button", className: "navbar-toggle" },
+																																																																								_react2.default.createElement(
+																																																																																"span",
+																																																																																{ className: "sr-only" },
+																																																																																"Toggle navigation"
+																																																																								),
+																																																																								_react2.default.createElement("span", { className: "icon-bar bar1" }),
+																																																																								_react2.default.createElement("span", { className: "icon-bar bar2" }),
+																																																																								_react2.default.createElement("span", { className: "icon-bar bar3" })
+																																																																),
+																																																																_react2.default.createElement(
+																																																																								"a",
+																																																																								{ className: "navbar-brand", href: "#" },
+																																																																								"Dashboard"
+																																																																)
+																																																								),
+																																																								_react2.default.createElement(
+																																																																"div",
+																																																																{ className: "collapse navbar-collapse" },
+																																																																_react2.default.createElement(
+																																																																								"ul",
+																																																																								{ className: "nav navbar-nav navbar-right" },
+																																																																								_react2.default.createElement(
+																																																																																"li",
+																																																																																null,
+																																																																																_react2.default.createElement(
+																																																																																								"a",
+																																																																																								{ href: "#", className: "dropdown-toggle", "data-toggle": "dropdown" },
+																																																																																								_react2.default.createElement("i", { className: "ti-panel" }),
+																																																																																								_react2.default.createElement(
+																																																																																																"p",
+																																																																																																null,
+																																																																																																"Stats"
+																																																																																								)
+																																																																																)
+																																																																								),
+																																																																								_react2.default.createElement(
+																																																																																"li",
+																																																																																{ className: "dropdown" },
+																																																																																_react2.default.createElement(
+																																																																																								"a",
+																																																																																								{ href: "#", className: "dropdown-toggle", "data-toggle": "dropdown" },
+																																																																																								_react2.default.createElement("i", { className: "ti-bell" }),
+																																																																																								_react2.default.createElement(
+																																																																																																"p",
+																																																																																																{ className: "notification" },
+																																																																																																"5"
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"p",
+																																																																																																null,
+																																																																																																"Notifications"
+																																																																																								),
+																																																																																								_react2.default.createElement("b", { className: "caret" })
+																																																																																),
+																																																																																_react2.default.createElement(
+																																																																																								"ul",
+																																																																																								{ className: "dropdown-menu" },
+																																																																																								_react2.default.createElement(
+																																																																																																"li",
+																																																																																																null,
+																																																																																																_react2.default.createElement(
+																																																																																																								"a",
+																																																																																																								{ href: "#" },
+																																																																																																								"Notification 1"
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"li",
+																																																																																																null,
+																																																																																																_react2.default.createElement(
+																																																																																																								"a",
+																																																																																																								{ href: "#" },
+																																																																																																								"Notification 2"
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"li",
+																																																																																																null,
+																																																																																																_react2.default.createElement(
+																																																																																																								"a",
+																																																																																																								{ href: "#" },
+																																																																																																								"Notification 3"
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"li",
+																																																																																																null,
+																																																																																																_react2.default.createElement(
+																																																																																																								"a",
+																																																																																																								{ href: "#" },
+																																																																																																								"Notification 4"
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"li",
+																																																																																																null,
+																																																																																																_react2.default.createElement(
+																																																																																																								"a",
+																																																																																																								{ href: "#" },
+																																																																																																								"Another notification"
+																																																																																																)
+																																																																																								)
+																																																																																)
+																																																																								),
+																																																																								_react2.default.createElement(
+																																																																																"li",
+																																																																																null,
+																																																																																_react2.default.createElement(
+																																																																																								"a",
+																																																																																								{ href: "#" },
+																																																																																								_react2.default.createElement("i", { className: "ti-settings" }),
+																																																																																								_react2.default.createElement(
+																																																																																																"p",
+																																																																																																null,
+																																																																																																"Settings"
+																																																																																								)
+																																																																																)
+																																																																								)
+																																																																)
+																																																								)
+																																																)
+																																								),
+																																								_react2.default.createElement(
+																																																"div",
+																																																{ className: "content" },
+																																																_react2.default.createElement(
+																																																								"div",
+																																																								{ className: "container-fluid" },
+																																																								_react2.default.createElement(
+																																																																"div",
+																																																																{ className: "row" },
+																																																																_react2.default.createElement(
+																																																																								"div",
+																																																																								{ className: "col-lg-3 col-sm-6" },
+																																																																								_react2.default.createElement(
+																																																																																"div",
+																																																																																{ className: "card" },
+																																																																																_react2.default.createElement(
+																																																																																								"div",
+																																																																																								{ className: "content" },
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "row" },
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-5" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "icon-big icon-warning text-center" },
+																																																																																																																_react2.default.createElement("i", { className: "ti-server" })
+																																																																																																								)
+																																																																																																),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-7" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "numbers" },
+																																																																																																																_react2.default.createElement(
+																																																																																																																								"p",
+																																																																																																																								null,
+																																																																																																																								"Capacity"
+																																																																																																																),
+																																																																																																																"105GB"
+																																																																																																								)
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "footer" },
+																																																																																																_react2.default.createElement("hr", null),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "stats" },
+																																																																																																								_react2.default.createElement("i", { className: "ti-reload" }),
+																																																																																																								" Updated now"
+																																																																																																)
+																																																																																								)
+																																																																																)
+																																																																								)
+																																																																),
+																																																																_react2.default.createElement(
+																																																																								"div",
+																																																																								{ className: "col-lg-3 col-sm-6" },
+																																																																								_react2.default.createElement(
+																																																																																"div",
+																																																																																{ className: "card" },
+																																																																																_react2.default.createElement(
+																																																																																								"div",
+																																																																																								{ className: "content" },
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "row" },
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-5" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "icon-big icon-success text-center" },
+																																																																																																																_react2.default.createElement("i", { className: "ti-wallet" })
+																																																																																																								)
+																																																																																																),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-7" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "numbers" },
+																																																																																																																_react2.default.createElement(
+																																																																																																																								"p",
+																																																																																																																								null,
+																																																																																																																								"Revenue"
+																																																																																																																),
+																																																																																																																"$1,345"
+																																																																																																								)
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "footer" },
+																																																																																																_react2.default.createElement("hr", null),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "stats" },
+																																																																																																								_react2.default.createElement("i", { className: "ti-calendar" }),
+																																																																																																								" Last day"
+																																																																																																)
+																																																																																								)
+																																																																																)
+																																																																								)
+																																																																),
+																																																																_react2.default.createElement(
+																																																																								"div",
+																																																																								{ className: "col-lg-3 col-sm-6" },
+																																																																								_react2.default.createElement(
+																																																																																"div",
+																																																																																{ className: "card" },
+																																																																																_react2.default.createElement(
+																																																																																								"div",
+																																																																																								{ className: "content" },
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "row" },
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-5" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "icon-big icon-danger text-center" },
+																																																																																																																_react2.default.createElement("i", { className: "ti-pulse" })
+																																																																																																								)
+																																																																																																),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-7" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "numbers" },
+																																																																																																																_react2.default.createElement(
+																																																																																																																								"p",
+																																																																																																																								null,
+																																																																																																																								"Errors"
+																																																																																																																),
+																																																																																																																"23"
+																																																																																																								)
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "footer" },
+																																																																																																_react2.default.createElement("hr", null),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "stats" },
+																																																																																																								_react2.default.createElement("i", { className: "ti-timer" }),
+																																																																																																								" In the last hour"
+																																																																																																)
+																																																																																								)
+																																																																																)
+																																																																								)
+																																																																),
+																																																																_react2.default.createElement(
+																																																																								"div",
+																																																																								{ className: "col-lg-3 col-sm-6" },
+																																																																								_react2.default.createElement(
+																																																																																"div",
+																																																																																{ className: "card" },
+																																																																																_react2.default.createElement(
+																																																																																								"div",
+																																																																																								{ className: "content" },
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "row" },
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-5" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "icon-big icon-info text-center" },
+																																																																																																																_react2.default.createElement("i", { className: "ti-twitter-alt" })
+																																																																																																								)
+																																																																																																),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "col-xs-7" },
+																																																																																																								_react2.default.createElement(
+																																																																																																																"div",
+																																																																																																																{ className: "numbers" },
+																																																																																																																_react2.default.createElement(
+																																																																																																																								"p",
+																																																																																																																								null,
+																																																																																																																								"Followers"
+																																																																																																																),
+																																																																																																																"+45"
+																																																																																																								)
+																																																																																																)
+																																																																																								),
+																																																																																								_react2.default.createElement(
+																																																																																																"div",
+																																																																																																{ className: "footer" },
+																																																																																																_react2.default.createElement("hr", null),
+																																																																																																_react2.default.createElement(
+																																																																																																								"div",
+																																																																																																								{ className: "stats" },
+																																																																																																								_react2.default.createElement("i", { className: "ti-reload" }),
+																																																																																																								" Updated now"
+																																																																																																)
+																																																																																								)
+																																																																																)
+																																																																								)
+																																																																)
+																																																								)
+																																																)
+																																								),
+																																								_react2.default.createElement(
+																																																"footer",
+																																																{ className: "footer" },
+																																																_react2.default.createElement(
+																																																								"div",
+																																																								{ className: "container-fluid" },
+																																																								_react2.default.createElement(
+																																																																"nav",
+																																																																{ className: "pull-left" },
+																																																																_react2.default.createElement(
+																																																																								"ul",
+																																																																								null,
+																																																																								_react2.default.createElement(
+																																																																																"li",
+																																																																																null,
+																																																																																_react2.default.createElement(
+																																																																																								"a",
+																																																																																								{ href: "http://www.creative-tim.com" },
+																																																																																								"Creative Tim"
+																																																																																)
+																																																																								),
+																																																																								_react2.default.createElement(
+																																																																																"li",
+																																																																																null,
+																																																																																_react2.default.createElement(
+																																																																																								"a",
+																																																																																								{ href: "http://blog.creative-tim.com" },
+																																																																																								"Blog"
+																																																																																)
+																																																																								),
+																																																																								_react2.default.createElement(
+																																																																																"li",
+																																																																																null,
+																																																																																_react2.default.createElement(
+																																																																																								"a",
+																																																																																								{ href: "http://www.creative-tim.com/license" },
+																																																																																								"Licenses"
+																																																																																)
+																																																																								)
+																																																																)
+																																																								),
+																																																								_react2.default.createElement(
+																																																																"div",
+																																																																{ className: "copyright pull-right" },
+																																																																"\xA9 2017, made with ",
+																																																																_react2.default.createElement("i", { className: "fa fa-heart heart" }),
+																																																																" by ",
+																																																																_react2.default.createElement(
+																																																																								"a",
+																																																																								{ href: "http://www.creative-tim.com" },
+																																																																								"Creative Tim"
+																																																																)
+																																																								)
+																																																)
+																																								)
+																																)
+																								);
+																}
+								}]);
+
+								return Home;
+}(_react.Component);
+
+exports.default = Home;
 
 /***/ })
 ],[28]);
