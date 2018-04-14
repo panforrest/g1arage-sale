@@ -25893,7 +25893,7 @@ var Home = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
 
 		_this.state = {
-			map: null
+			// map: null
 		};
 		return _this;
 	}
@@ -25917,18 +25917,7 @@ var Home = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'container-fluid' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'row' },
-								_react2.default.createElement(_presentation.Item, null),
-								_react2.default.createElement(_presentation.Item, null),
-								_react2.default.createElement(_presentation.Item, null),
-								_react2.default.createElement(_presentation.Item, null)
-							)
-						)
+						_react2.default.createElement(_containers.Results, null)
 					),
 					_react2.default.createElement(_presentation.Footer, null)
 				)
@@ -25959,7 +25948,6 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
-    //THIS IS NEW
 
     return _react2.default.createElement(
         "nav",
@@ -26194,6 +26182,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
     //THIS IS NEW
 
+    var item = props.item;
+
     return _react2.default.createElement(
         "div",
         { className: "col-lg-3 col-sm-6" },
@@ -26224,9 +26214,10 @@ exports.default = function (props) {
                             _react2.default.createElement(
                                 "p",
                                 null,
-                                "Revenue"
+                                item.label
                             ),
-                            "$1,345"
+                            "$",
+                            item.price
                         )
                     )
                 ),
@@ -26238,7 +26229,7 @@ exports.default = function (props) {
                         "div",
                         { className: "stats" },
                         _react2.default.createElement("i", { className: "ti-calendar" }),
-                        " Last day"
+                        " Updated now"
                     )
                 )
             )
@@ -37718,20 +37709,27 @@ var updaterMap = {}
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Search = undefined;
+exports.Results = exports.Search = undefined;
 
 var _Search = __webpack_require__(402);
 
 var _Search2 = _interopRequireDefault(_Search);
 
+var _Results = __webpack_require__(403);
+
+var _Results2 = _interopRequireDefault(_Results);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.Search = _Search2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                   	Export your container components here. The Users
-                                   	container is just an example and you will likely
-                                   	remove it in favor of your own containers. 
-                                   * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                   */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your container components here. The Users
+	container is just an example and you will likely
+	remove it in favor of your own containers. 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+exports.Search = _Search2.default;
+exports.Results = _Results2.default;
 
 /***/ }),
 /* 402 */
@@ -37779,7 +37777,7 @@ var Search = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
-			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7124017, lng: -73.9896719 } }];
+			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }];
 
 			return _react2.default.createElement(
 				'div',
@@ -37807,6 +37805,70 @@ var Search = function (_Component) {
 }(_react.Component);
 
 exports.default = Search;
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _presentation = __webpack_require__(105);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Result = function (_Component) {
+    _inherits(Result, _Component);
+
+    function Result() {
+        _classCallCheck(this, Result);
+
+        var _this = _possibleConstructorReturn(this, (Result.__proto__ || Object.getPrototypeOf(Result)).call(this));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(Result, [{
+        key: 'render',
+        value: function render() {
+
+            var items = [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }];
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'container-fluid' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    items.map(function (item, i) {
+                        return _react2.default.createElement(_presentation.Item, { key: item.id, item: item });
+                    })
+                )
+            );
+        }
+    }]);
+
+    return Result;
+}(_react.Component);
+
+exports.default = Result;
 
 /***/ })
 ],[159]);

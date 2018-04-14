@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 export default (props) => {  //THIS IS NEW
 
+  const item = props.item
+
   return (
 
     <div className="col-lg-3 col-sm-6">
@@ -15,15 +17,15 @@ export default (props) => {  //THIS IS NEW
                     </div>
                     <div className="col-xs-7">
                         <div className="numbers">
-                            <p>Revenue</p>
-                            $1,345
+                            <p>{item.label}</p>
+                            ${item.price}
                         </div>
                     </div>
                 </div>
                 <div className="footer">
                     <hr />
                     <div className="stats">
-                        <i className="ti-calendar"></i> Last day
+                        <i className="ti-calendar"></i> Updated now
                     </div>
                 </div>
             </div>
