@@ -10030,10 +10030,12 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = {
 
-	USERS_RECEIVED: 'USERS_RECEIVED',
-	USER_CREATED: 'USER_CREATED',
-	USER_LOGGED_IN: 'USER_LOGGED_IN',
-	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED'
+	LOCATION_CHANGED: 'LOCATION_CHANGED',
+	ITEM_ADDED: 'ITEM_ADDED'
+	// USERS_RECEIVED: 		'USERS_RECEIVED',
+	// USER_CREATED: 			'USER_CREATED',
+	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
+	// CURRENT_USER_RECEIVED: 	'CURRENT_USER_RECEIVED'
 
 };
 
@@ -13259,14 +13261,14 @@ exports.default = {
 
 	addItem: function addItem(item) {
 		return {
-			type: 'ITEM_ADDED',
+			type: _constants2.default.ITEM_ADDED,
 			data: item
 		};
 	},
 
 	locationChanged: function locationChanged(location) {
 		return {
-			type: 'LOCATION_CHANGED',
+			type: _constants2.default.LOCATION_CHANGED,
 			data: location
 		};
 	}
@@ -31325,6 +31327,13 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _constants = __webpack_require__(104);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var initialState = {
     all: [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }, { id: 3, key: '3', price: 30, defaultAnimation: 2, label: 'TV', position: { lat: 40.7024017, lng: -73.9896719 } }]
 };
@@ -31337,7 +31346,7 @@ exports.default = function () {
 
     switch (action.type) {
 
-        case 'ITEM_ADDED':
+        case _constants2.default.ITEM_ADDED:
             console.log('ITEM_ADDED: ' + JSON.stringify(action.data));
             var all = Object.assign([], updated.all);
             all.push(action.data);
@@ -31359,6 +31368,13 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _constants = __webpack_require__(104);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var initialState = {
     currentLocation: { lat: 40.72, lng: -73.98 // 
     } };
@@ -31370,7 +31386,7 @@ exports.default = function () {
     var updated = Object.assign({}, state);
     switch (action.type) {
 
-        case 'LOCATION_CHANGED':
+        case _constants2.default.LOCATION_CHANGED:
             console.log('LOCATION_CHANGED: ' + JSON.stringify(action.data));
             updated['currentLocation'] = action.data;
             return updated;
