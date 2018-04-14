@@ -23945,7 +23945,8 @@ exports.default = {
 
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
 			user: _reducers.userReducer,
-			item: _reducers.itemReducer
+			item: _reducers.itemReducer,
+			map: _reducers.mapReducer
 		});
 
 		if (initialState) {
@@ -24541,7 +24542,7 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.itemReducer = exports.userReducer = undefined;
+exports.mapReducer = exports.itemReducer = exports.userReducer = undefined;
 
 var _userReducer = __webpack_require__(186);
 
@@ -24551,15 +24552,18 @@ var _itemReducer = __webpack_require__(404);
 
 var _itemReducer2 = _interopRequireDefault(_itemReducer);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _mapReducer = __webpack_require__(429);
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your reducers here
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
+var _mapReducer2 = _interopRequireDefault(_mapReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.userReducer = _userReducer2.default;
 exports.itemReducer = _itemReducer2.default;
+exports.mapReducer = _mapReducer2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                           	Export your reducers here
+                                           * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                           */
 
 /***/ }),
 /* 186 */
@@ -37747,7 +37751,7 @@ exports.Results = _Results2.default;
 
 
 Object.defineProperty(exports, "__esModule", {
-				value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -37760,6 +37764,10 @@ var _presentation = __webpack_require__(105);
 
 var _reactRedux = __webpack_require__(188);
 
+var _actions = __webpack_require__(409);
+
+var _actions2 = _interopRequireDefault(_actions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37769,69 +37777,86 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Search = function (_Component) {
-				_inherits(Search, _Component);
+	_inherits(Search, _Component);
 
-				function Search() {
-								_classCallCheck(this, Search);
+	function Search() {
+		_classCallCheck(this, Search);
 
-								var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
-								_this.state = {
-												map: null
-								};
-								return _this;
-				}
+		_this.state = {
+			map: null,
+			center: null
+		};
+		return _this;
+	}
 
-				_createClass(Search, [{
-								key: 'centerChanged',
-								value: function centerChanged(center) {
-												console.log('centerChanged' + JSON.stringify(center));
-								}
-				}, {
-								key: 'render',
-								value: function render() {
-												var _this2 = this;
+	_createClass(Search, [{
+		key: 'centerChanged',
+		value: function centerChanged(center) {
+			console.log('centerChanged' + JSON.stringify(center));
+			var updated = Object.assign({}, this.state.center);
+			updated = center;
+			this.setState({
+				center: updated
+			});
 
-												// const markers = [
-												//     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
-												//     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
-												// ]
+			this.props.changeCenter(center);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-												var items = this.props.item.all || [];
+			// const markers = [
+			//     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
+			//     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
+			// ]
 
-												return _react2.default.createElement(
-																'div',
-																{ className: 'sidebar-wrapper', style: { height: 960 } },
-																_react2.default.createElement(_presentation.Map, {
-																				onMapReady: function onMapReady(map) {
-																								if (_this2.state.map != null) return;
+			var items = this.props.item.all || [];
 
-																								console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
-																								_this2.setState({
-																												map: map
-																								});
-																				},
+			return _react2.default.createElement(
+				'div',
+				{ className: 'sidebar-wrapper', style: { height: 960 } },
+				_react2.default.createElement(_presentation.Map, {
+					onMapReady: function onMapReady(map) {
+						if (_this2.state.map != null) return;
 
-																				locationChanged: this.centerChanged.bind(this),
-																				markers: items,
-																				zoom: 12,
-																				center: { lat: 40.7224017, lng: -73.9896719 },
-																				containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
-																				mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
-												);
-								}
-				}]);
+						console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
+						_this2.setState({
+							map: map
+						});
+					},
 
-				return Search;
+					locationChanged: this.centerChanged.bind(this),
+					markers: items,
+					zoom: 12,
+					center: { lat: 40.7224017, lng: -73.9896719 },
+					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
+					mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
+			);
+		}
+	}]);
+
+	return Search;
 }(_react.Component);
 
 var stateToProps = function stateToProps(state) {
-				return {
-								item: state.item
-				};
+	return {
+		item: state.item,
+		center: state.map.center
+	};
 };
 
-exports.default = (0, _reactRedux.connect)(stateToProps)(Search);
+var dispatchToProps = function dispatchToProps(dispatch) {
+	return {
+		changeCenter: function changeCenter(center) {
+			return dispatch(_actions2.default.changeCenter(center));
+		}
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search);
 
 /***/ }),
 /* 403 */
@@ -44641,6 +44666,13 @@ exports.default = {
 			type: 'ITEM_ADDED',
 			data: item
 		};
+	},
+
+	changeCenter: function changeCenter(center) {
+		return {
+			type: 'CENTER_CHANGED',
+			data: center
+		};
 	}
 
 	// fetchUsers: (params) => {
@@ -46284,6 +46316,36 @@ var Promise=__webpack_require__(406),superagent=__webpack_require__(405),TURBO_V
 /***/ (function(module, exports) {
 
 module.exports = {"name":"g1arage-sale","version":"0.0.0","server":false,"private":true,"scripts":{"clean":"rm -rf ./public/dist","build":"npm run clean && NODE_ENV=production webpack && gulp prod","postinstall":"npm run build"},"dependencies":{"bluebird":"latest","debug":"latest","dotenv":"latest","moment":"latest","react":"latest","react-bootstrap":"latest","react-dom":"latest","react-dropzone":"latest","react-google-maps":"^9.4.5","react-redux":"latest","react-time":"latest","redux":"latest","redux-thunk":"latest","superagent":"latest","turbo360":"latest","vertex360":"latest"},"devDependencies":{"babel-core":"latest","babel-loader":"latest","babel-preset-es2015":"latest","babel-preset-react":"latest","chai":"latest","chai-http":"latest","gulp":"latest","gulp-6to5":"latest","gulp-autoprefixer":"latest","gulp-concat":"latest","gulp-less":"latest","gulp-minify-css":"latest","gulp-rename":"latest","gulp-sass":"^3.1.0","gulp-uglify":"latest","json-loader":"latest","mocha":"latest","mocha-jscs":"latest","mocha-jshint":"latest","nodemon":"latest","rimraf":"latest","webpack":"latest"},"app":"TURBO_APP_ID","deploy":["."],"format":"vertex"}
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var initialState = {
+    center: null
+};
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+    var updated = Object.assign({}, state);
+    switch (action.type) {
+
+        case 'CENTER_CHANGED':
+            console.log('CENTER_CHANGED: ' + JSON.stringify(action.data));
+            return updated;
+
+        default:
+            return state;
+    }
+};
 
 /***/ })
 ],[159]);

@@ -14,6 +14,13 @@ export default {
 			type: 'ITEM_ADDED',
 			data: item
 		}
+	},
+
+	changeCenter: (center) => {
+		return {
+			type: 'CENTER_CHANGED',
+			data: center
+		}
 	}
 
 	// fetchUsers: (params) => {
