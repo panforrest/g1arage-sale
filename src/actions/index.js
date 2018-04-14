@@ -16,10 +16,10 @@ export default {
 		}
 	},
 
-	changeCenter: (center) => {
+	locationChanged: (location) => {
 		return {
-			type: 'CENTER_CHANGED',
-			data: center
+			type: 'LOCATION_CHANGED',
+			data: location
 		}
 	}
 

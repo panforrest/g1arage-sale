@@ -15,13 +15,13 @@ class Search extends Component {
 
 	centerChanged(center){
 		console.log('centerChanged' + JSON.stringify(center))
-		let updated = Object.assign({}, this.state.center)
-        updated = center
-		this.setState({
-            center: updated
-		})
+		// let updated = Object.assign({}, this.state.center)
+  //       updated = center
+		// this.setState({
+  //           center: updated
+		// })
 		
-		this.props.changeCenter(center)
+		this.props.locationChanged(center)
 	}
 
     render(){
@@ -52,7 +52,8 @@ class Search extends Component {
                 locationChanged={this.centerChanged.bind(this)}
                 markers={items}
 			    zoom={12}
-			    center={{lat:40.7224017, lng:-73.9896719}}
+			    // center={{lat:40.7224017, lng:-73.9896719}}
+			    center={this.props.map.currentLocation}
 			    containerElement={<div style={{height:100+'%'}} />} 
 			    mapElement={<div style={{height:100+'%'}} />} />
 
@@ -67,13 +68,13 @@ class Search extends Component {
 const stateToProps = (state) => {
     return {
         item: state.item,
-       center: state.map.center
+        map: state.map
     }
 }
 
 const dispatchToProps = (dispatch) => {
 	return {
-        changeCenter: (center) => dispatch(actions.changeCenter(center))
+        locationChanged: (location) => dispatch(actions.locationChanged(location))
 	}
 }
 

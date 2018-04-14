@@ -1,16 +1,17 @@
 var initialState = {
-	center: null
+	currentLocation: {lat:40.72,lng:-73.98}
 }
 
 export default (state=initialState, action) => {
 	let updated = Object.assign({}, state)
     switch(action.type){
 
-        case 'CENTER_CHANGED':
-            console.log('CENTER_CHANGED: '+JSON.stringify(action.data))
+        case 'LOCATION_CHANGED':
+            console.log('LOCATION_CHANGED: '+JSON.stringify(action.data))
+            updated['currentLocation'] = action.data
             return updated
 
     	default:
-    	    return state
+    	    return updated
     }
 }

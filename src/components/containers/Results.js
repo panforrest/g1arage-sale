@@ -94,7 +94,8 @@ const localStyle = {
 
 const stateToProps = (state) => {
     return {
-        item: state.item
+        item: state.item,
+        map: state.map  
     }
 }
 
