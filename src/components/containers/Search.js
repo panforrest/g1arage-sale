@@ -11,6 +11,10 @@ class Search extends Component {
 		}
 	}
 
+	centerChanged(center){
+		console.log('centerChanged' + JSON.stringify(center))
+	}
+
     render(){
 
         // const markers = [
@@ -36,7 +40,7 @@ class Search extends Component {
 			        })
 			    }}
 
-
+                locationChanged={this.centerChanged.bind(this)}
                 markers={items}
 			    zoom={12}
 			    center={{lat:40.7224017, lng:-73.9896719}}
