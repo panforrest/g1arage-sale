@@ -37747,7 +37747,7 @@ exports.Results = _Results2.default;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+				value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -37758,6 +37758,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(105);
 
+var _reactRedux = __webpack_require__(188);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37767,52 +37769,63 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Search = function (_Component) {
-	_inherits(Search, _Component);
+				_inherits(Search, _Component);
 
-	function Search() {
-		_classCallCheck(this, Search);
+				function Search() {
+								_classCallCheck(this, Search);
 
-		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+								var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
-		_this.state = {
-			map: null
-		};
-		return _this;
-	}
+								_this.state = {
+												map: null
+								};
+								return _this;
+				}
 
-	_createClass(Search, [{
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
+				_createClass(Search, [{
+								key: 'render',
+								value: function render() {
+												var _this2 = this;
 
-			var markers = [{ id: 1, key: '1', defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }];
+												// const markers = [
+												//     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
+												//     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
+												// ]
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'sidebar-wrapper', style: { height: 960 } },
-				_react2.default.createElement(_presentation.Map, {
-					onMapReady: function onMapReady(map) {
-						if (_this2.state.map != null) return;
+												var items = this.props.item.all || [];
 
-						console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
-						_this2.setState({
-							map: map
-						});
-					},
+												return _react2.default.createElement(
+																'div',
+																{ className: 'sidebar-wrapper', style: { height: 960 } },
+																_react2.default.createElement(_presentation.Map, {
+																				onMapReady: function onMapReady(map) {
+																								if (_this2.state.map != null) return;
 
-					markers: markers,
-					zoom: 12,
-					center: { lat: 40.7224017, lng: -73.9896719 },
-					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
-					mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
-			);
-		}
-	}]);
+																								console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
+																								_this2.setState({
+																												map: map
+																								});
+																				},
 
-	return Search;
+																				markers: items,
+																				zoom: 12,
+																				center: { lat: 40.7224017, lng: -73.9896719 },
+																				containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
+																				mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
+												);
+								}
+				}]);
+
+				return Search;
 }(_react.Component);
 
-exports.default = Search;
+var stateToProps = function stateToProps(state) {
+				return {
+								item: state.item
+				};
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps)(Search);
 
 /***/ }),
 /* 403 */
@@ -37899,22 +37912,22 @@ exports.default = (0, _reactRedux.connect)(stateToProps)(Results);
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 var initialState = {
-	all: [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }]
+  all: [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }, { id: 3, key: '3', price: 30, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7024017, lng: -73.9896719 } }]
 };
 
 exports.default = function () {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
 
-	var updated = Object.assign({}, state);
+  var updated = Object.assign({}, state);
 
-	switch (action.type) {
-		default:
-			return state;
-	}
+  switch (action.type) {
+    default:
+      return state;
+  }
 };
 
 /***/ })

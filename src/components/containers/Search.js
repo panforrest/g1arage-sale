@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Map } from './../presentation'
+import { connect } from 'react-redux'
 
 class Search extends Component {
 
@@ -12,10 +13,12 @@ class Search extends Component {
 
     render(){
 
-        const markers = [
-            {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
-            {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
-        ]
+        // const markers = [
+        //     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
+        //     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
+        // ]
+
+        const items = this.props.item.all || []
 
     	return(
 
@@ -34,7 +37,7 @@ class Search extends Component {
 			    }}
 
 
-                markers={markers}
+                markers={items}
 			    zoom={12}
 			    center={{lat:40.7224017, lng:-73.9896719}}
 			    containerElement={<div style={{height:100+'%'}} />} 
@@ -48,4 +51,10 @@ class Search extends Component {
 
 }
 
-export default Search
+const stateToProps = (state) => {
+    return {
+        item: state.item
+    }
+}
+
+export default connect(stateToProps)(Search)
