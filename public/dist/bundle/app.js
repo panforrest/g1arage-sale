@@ -23944,7 +23944,8 @@ exports.default = {
 		// initialState can be null
 
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
-			user: _reducers.userReducer
+			user: _reducers.userReducer,
+			item: _reducers.itemReducer
 		});
 
 		if (initialState) {
@@ -24540,18 +24541,25 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.userReducer = undefined;
+exports.itemReducer = exports.userReducer = undefined;
 
 var _userReducer = __webpack_require__(186);
 
 var _userReducer2 = _interopRequireDefault(_userReducer);
 
+var _itemReducer = __webpack_require__(404);
+
+var _itemReducer2 = _interopRequireDefault(_itemReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.userReducer = _userReducer2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                             	Export your reducers here
-                                             * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                             */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your reducers here
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+exports.userReducer = _userReducer2.default;
+exports.itemReducer = _itemReducer2.default;
 
 /***/ }),
 /* 186 */
@@ -37825,6 +37833,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(105);
 
+var _reactRedux = __webpack_require__(188);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37833,23 +37843,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Result = function (_Component) {
-    _inherits(Result, _Component);
+var Results = function (_Component) {
+    _inherits(Results, _Component);
 
-    function Result() {
-        _classCallCheck(this, Result);
+    function Results() {
+        _classCallCheck(this, Results);
 
-        var _this = _possibleConstructorReturn(this, (Result.__proto__ || Object.getPrototypeOf(Result)).call(this));
+        var _this = _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).call(this));
 
         _this.state = {};
         return _this;
     }
 
-    _createClass(Result, [{
+    _createClass(Results, [{
         key: 'render',
         value: function render() {
 
-            var items = [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }];
+            // const items = [
+            //     {id:1, key:'1', price:10, defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
+            //     {id:2, key:'2', price:20, defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
+            // ]
+
+            var items = this.props.item.all || [];
 
             return _react2.default.createElement(
                 'div',
@@ -37865,10 +37880,42 @@ var Result = function (_Component) {
         }
     }]);
 
-    return Result;
+    return Results;
 }(_react.Component);
 
-exports.default = Result;
+var stateToProps = function stateToProps(state) {
+    return {
+        item: state.item
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps)(Results);
+
+/***/ }),
+/* 404 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var initialState = {
+	all: [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }]
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updated = Object.assign({}, state);
+
+	switch (action.type) {
+		default:
+			return state;
+	}
+};
 
 /***/ })
 ],[159]);
