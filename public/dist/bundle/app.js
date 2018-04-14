@@ -31360,8 +31360,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var initialState = {
-    currentLocation: { lat: 40.72, lng: -73.98 }
-};
+    currentLocation: { lat: 40.72, lng: -73.98 // 
+    } };
 
 exports.default = function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -44531,7 +44531,7 @@ var Search = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'sidebar-wrapper', style: { height: 960 } },
+				{ className: 'sidebar-wrapper' },
 				_react2.default.createElement(_presentation.Map, {
 					onMapReady: function onMapReady(map) {
 						if (_this2.state.map != null) return;
@@ -44548,7 +44548,7 @@ var Search = function (_Component) {
 					// center={{lat:40.7224017, lng:-73.9896719}}
 					, center: this.props.map.currentLocation,
 					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
-					mapElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }) })
+					mapElement: _react2.default.createElement('div', { style: { height: 100 + 'vh' } }) })
 			);
 		}
 	}]);
@@ -46224,7 +46224,7 @@ var Results = function (_Component) {
 
         _this.state = {
             item: {
-                position: { lat: 40.70224017, lng: -73.9796719 }
+                // position:{lat:40.70224017, lng:-73.9796719}
             }
         };
         return _this;
@@ -46251,6 +46251,7 @@ var Results = function (_Component) {
             newItem['id'] = 100;
             newItem['key'] = '100';
             newItem['defaultAnimation'] = 2;
+            newItem['position'] = this.props.map.currentLocation;
             //CALL ACTION
             this.props.addItem(newItem);
         }

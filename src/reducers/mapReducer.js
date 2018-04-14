@@ -1,5 +1,5 @@
 var initialState = {
-	currentLocation: {lat:40.72,lng:-73.98}
+	currentLocation: {lat:40.72,lng:-73.98} // 
 }
 
 export default (state=initialState, action) => {

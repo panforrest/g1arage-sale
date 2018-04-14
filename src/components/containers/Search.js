@@ -35,7 +35,7 @@ class Search extends Component {
 
     	return(
 
-          <div className="sidebar-wrapper" style={{height:960}}>
+          <div className="sidebar-wrapper">
 
 
 			<Map 
@@ -55,7 +55,7 @@ class Search extends Component {
 			    // center={{lat:40.7224017, lng:-73.9896719}}
 			    center={this.props.map.currentLocation}
 			    containerElement={<div style={{height:100+'%'}} />} 
-			    mapElement={<div style={{height:100+'%'}} />} />
+			    mapElement={<div style={{height:100+'vh'}} />} />
 
             
     	  </div>
