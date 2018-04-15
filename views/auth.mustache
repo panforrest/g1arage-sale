@@ -20,9 +20,18 @@
 
 </head>
 <body>
-    <div>
+  <div class="row">
+    <div class="container">
         <h2>Join Garage Sale</h2>
+        <form action="/auth/register" method="post"> 
+            <input type="text" name="email" placeholder="Email" class="form-control" /><br />
+            <input type="text" name="username" placeholder="Username" class="form-control" /><br />
+            <input type="text" name="password" placeholder="Password" class="form-control" /><br />
+            <button class="btn btn-success btn-fill" type="submit">Sign up</button><br />
+
+        </form>
     </div>
+  </div>
 
 </body>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC44mPpaMNvENXryYjHBHzjST1UMnYlARk"></script>
