@@ -2,10 +2,10 @@ import constants from '../constants'
 
 var initialState = {
     all: [
-            {id:1, key:'1', price:10, defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
-            {id:2, key:'2', price:20, defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}},
-            {id:3, key:'3', price:30, defaultAnimation:2, label:'TV', position:{lat:40.7024017, lng:-73.9896719}}
-    ]	
+        {id:'1', price:10, name:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}, seller:{username:'lebron_james',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+        {id:'2', price:20, name:'Sofa', position:{lat:40.7124017, lng:-73.9896719}, seller:{username:'eli_manning',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}},
+        {id:'3', price:30, name:'TV', position:{lat:40.7024017, lng:-73.9896719}, seller:{username:'tom_brady',image:'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png'}}
+	]
 }
 
 export default (state=initialState, action) => {

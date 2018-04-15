@@ -24,8 +24,10 @@ export default (props) => {  //THIS IS NEW
                 </div>
                 <div className="footer">
                     <hr />
+                    <img style={localStyle.icon} src={item.seller.image} />
                     <div className="stats">
-                        <i className="ti-calendar"></i> Updated now
+
+                        {item.seller.username}
                     </div>
                 </div>
             </div>
@@ -34,4 +36,8 @@ export default (props) => {  //THIS IS NEW
 
   )
 
+}
+
+const localStyle = {
+    icon: {width:28, borderRadius:14, float:'right'}
 }

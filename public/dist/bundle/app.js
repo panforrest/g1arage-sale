@@ -31335,7 +31335,7 @@ var _constants2 = _interopRequireDefault(_constants);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-    all: [{ id: 1, key: '1', price: 10, defaultAnimation: 2, label: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 } }, { id: 2, key: '2', price: 20, defaultAnimation: 2, label: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 } }, { id: 3, key: '3', price: 30, defaultAnimation: 2, label: 'TV', position: { lat: 40.7024017, lng: -73.9896719 } }]
+    all: [{ id: '1', price: 10, name: 'Nike Jordans', position: { lat: 40.7224017, lng: -73.9896719 }, seller: { username: 'lebron_james', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '2', price: 20, name: 'Sofa', position: { lat: 40.7124017, lng: -73.9896719 }, seller: { username: 'eli_manning', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }, { id: '3', price: 30, name: 'TV', position: { lat: 40.7024017, lng: -73.9896719 }, seller: { username: 'tom_brady', image: 'http://cdn.hoopshype.com/i/de/74/ac/lebron-james.png' } }]
 };
 
 exports.default = function () {
@@ -32967,16 +32967,20 @@ exports.default = function (props) {
                     "div",
                     { className: "footer" },
                     _react2.default.createElement("hr", null),
+                    _react2.default.createElement("img", { style: localStyle.icon, src: item.seller.image }),
                     _react2.default.createElement(
                         "div",
                         { className: "stats" },
-                        _react2.default.createElement("i", { className: "ti-calendar" }),
-                        " Updated now"
+                        item.seller.username
                     )
                 )
             )
         )
     );
+};
+
+var localStyle = {
+    icon: { width: 28, borderRadius: 14, float: 'right' }
 };
 
 /***/ }),
@@ -44481,7 +44485,7 @@ exports.Results = _Results2.default;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -44507,84 +44511,97 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Search = function (_Component) {
-	_inherits(Search, _Component);
+  _inherits(Search, _Component);
 
-	function Search() {
-		_classCallCheck(this, Search);
+  function Search() {
+    _classCallCheck(this, Search);
 
-		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+    var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
-		_this.state = {
-			map: null,
-			center: null
-		};
-		return _this;
-	}
+    _this.state = {
+      map: null,
+      center: null
+    };
+    return _this;
+  }
 
-	_createClass(Search, [{
-		key: 'centerChanged',
-		value: function centerChanged(center) {
-			console.log('centerChanged' + JSON.stringify(center));
-			// let updated = Object.assign({}, this.state.center)
-			//       updated = center
-			// this.setState({
-			//           center: updated
-			// })
+  _createClass(Search, [{
+    key: 'centerChanged',
+    value: function centerChanged(center) {
+      console.log('centerChanged' + JSON.stringify(center));
+      // let updated = Object.assign({}, this.state.center)
+      //       updated = center
+      // this.setState({
+      //           center: updated
+      // })
 
-			this.props.locationChanged(center);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
+      this.props.locationChanged(center);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-			// const markers = [
-			//     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
-			//     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
-			// ]
+      // const markers = [
+      //     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
+      //     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
+      // ]
 
-			var items = this.props.item.all || [];
+      var items = this.props.item.all || [];
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'sidebar-wrapper' },
-				_react2.default.createElement(_presentation.Map, {
-					onMapReady: function onMapReady(map) {
-						if (_this2.state.map != null) return;
+      var markers = [];
+      items.forEach(function (item, i) {
+        // {id:'1', key:'1', price:10, name:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}}
+        var marker = {
+          key: item.id,
+          label: item.name,
+          position: item.position,
+          defaultAnimation: 2
+        };
 
-						console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
-						_this2.setState({
-							map: map
-						});
-					},
+        markers.push(marker);
+      });
 
-					locationChanged: this.centerChanged.bind(this),
-					markers: items,
-					zoom: 12
-					// center={{lat:40.7224017, lng:-73.9896719}}
-					, center: this.props.map.currentLocation,
-					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
-					mapElement: _react2.default.createElement('div', { style: { height: 100 + 'vh' } }) })
-			);
-		}
-	}]);
+      return _react2.default.createElement(
+        'div',
+        { className: 'sidebar-wrapper' },
+        _react2.default.createElement(_presentation.Map, {
+          onMapReady: function onMapReady(map) {
+            if (_this2.state.map != null) return;
 
-	return Search;
+            console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
+            _this2.setState({
+              map: map
+            });
+          },
+
+          locationChanged: this.centerChanged.bind(this),
+          markers: markers,
+          zoom: 12
+          // center={{lat:40.7224017, lng:-73.9896719}}
+          , center: this.props.map.currentLocation,
+          containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
+          mapElement: _react2.default.createElement('div', { style: { height: 100 + 'vh' } }) })
+      );
+    }
+  }]);
+
+  return Search;
 }(_react.Component);
 
 var stateToProps = function stateToProps(state) {
-	return {
-		item: state.item,
-		map: state.map
-	};
+  return {
+    item: state.item,
+    map: state.map
+  };
 };
 
 var dispatchToProps = function dispatchToProps(dispatch) {
-	return {
-		locationChanged: function locationChanged(location) {
-			return dispatch(_actions2.default.locationChanged(location));
-		}
-	};
+  return {
+    locationChanged: function locationChanged(location) {
+      return dispatch(_actions2.default.locationChanged(location));
+    }
+  };
 };
 
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search);
@@ -46264,9 +46281,10 @@ var Results = function (_Component) {
             console.log('ADD ITEM: ' + JSON.stringify(this.state.item));
 
             var newItem = Object.assign({}, this.state.item);
-            newItem['id'] = 100;
-            newItem['key'] = '100';
-            newItem['defaultAnimation'] = 2;
+            var len = this.props.item.all.length + 1;
+            newItem['id'] = len.toString();
+            // newItem['key'] = '100'
+            // newItem['defaultAnimation'] = 2
             newItem['position'] = this.props.map.currentLocation;
             //CALL ACTION
             this.props.addItem(newItem);

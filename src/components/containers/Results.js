@@ -28,9 +28,10 @@ class Results extends Component {
         console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
 
         let newItem = Object.assign({}, this.state.item)
-        newItem['id'] = 100
-        newItem['key'] = '100'
-        newItem['defaultAnimation'] = 2
+        const len = this.props.item.all.length+1
+        newItem['id'] = len.toString()
+        // newItem['key'] = '100'
+        // newItem['defaultAnimation'] = 2
         newItem['position'] = this.props.map.currentLocation
         //CALL ACTION
         this.props.addItem(newItem)

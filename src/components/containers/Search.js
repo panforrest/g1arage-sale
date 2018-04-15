@@ -33,6 +33,19 @@ class Search extends Component {
 
         const items = this.props.item.all || []
 
+        let markers = []
+        items.forEach((item, i) => {
+        	// {id:'1', key:'1', price:10, name:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}}
+        	const marker = {
+        		key: item.id,
+        		label: item.name,
+        		position: item.position,
+        		defaultAnimation: 2
+        	}
+
+        	markers.push(marker)
+        })
+
     	return(
 
           <div className="sidebar-wrapper">
@@ -50,7 +63,7 @@ class Search extends Component {
 			    }}
 
                 locationChanged={this.centerChanged.bind(this)}
-                markers={items}
+                markers={markers}
 			    zoom={12}
 			    // center={{lat:40.7224017, lng:-73.9896719}}
 			    center={this.props.map.currentLocation}
