@@ -21,6 +21,12 @@ export default {
 		}
 	},
 
+	submitOrder: (order) => {
+		return dispatch => {
+			return dispatch(HTTPAsync.post('/api/order', order, null))
+		}
+	},
+
 	locationChanged: (location) => {
 		return {
 			type: constants.LOCATION_CHANGED,

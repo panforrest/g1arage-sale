@@ -25,7 +25,7 @@ export default (state=initialState, action) => {
 
         case constants.ITEMS_RECEIVED:
             // console.log('ITEMS_RECEIVED: ' + JSON.stringify(action.data))
-            updated['all'] = action.data.data
+            updated['all'] = action.data.data  //THIS IS THE BUG THAT KILLS ME
             return updated
 
 		default: 

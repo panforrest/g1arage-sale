@@ -14,6 +14,9 @@ class Results extends Component {
             showModal: false,
             item: {
                 // position:{lat:40.70224017, lng:-73.9796719}
+            },
+            order: {
+
             }
         }
     }
@@ -95,9 +98,44 @@ class Results extends Component {
     onPurchase(item, event){
         event.preventDefault()
         this.setState({
-            showModal:true
+            showModal:true,
+            selectedItem:item
         })
         console.log('onPurchase: ' + JSON.stringify(item))
+    }
+
+    updateOrder(event){
+        console.log('updateOrder: '+event.target.value)
+        let updated = Object.assign({}, this.state.order)
+        updated['message'] = event.target.value
+        this.setState({
+            order: updated
+        })
+    }
+
+    submitOrder(){
+        let updated = Object.assign({}, this.state.order)
+        updated['item'] = this.state.selectedItem
+        updated['buyer'] = {
+            id: this.props.account.currentUser.id,
+            username: this.props.account.currentUser.username,
+            email: this.props.account.currentUser.email
+        }
+
+        console.log('submitOrder: ' + JSON.stringify(updated))
+
+        this.props.submitOrder(updated)
+        .then(data => {
+            alert('Your order has been submitted')
+            this.setState({
+                showModal: false
+            })
+        })
+        .catch(err => {
+            alert('OOPS: '+err.message)
+        })
+
+        
     }
 
     render(){
@@ -162,8 +200,8 @@ class Results extends Component {
                 <Modal bsSize="sm" show={this.state.showModal} onHide={ () => {this.setState({showModal:false})} }>
                     <Modal.Body style={localStyle.modal}>
                         <h2>Purchase Item</h2>
-                        <textarea placeholder="Enter Message Here" className="form-control"></textarea>
-                        <button className="btn btn-success btn-fill">Purchase!</button>
+                        <textarea onChange={this.updateOrder.bind(this)} style={localStyle.textarea} placeholder="Enter Message Here" className="form-control"></textarea>
+                        <button onClick={this.submitOrder.bind(this)} className="btn btn-success btn-fill">Purchase!</button>
                     </Modal.Body>
                 </Modal>
 
@@ -178,6 +216,11 @@ const localStyle = {
     input: {
         border: '1px solid #ddd',
         marginBottom: 12
+    },
+    testarea: {
+        border: '1px solid #ddd',
+        height: 160,
+        marginBottom: 16
     }
 }
 
@@ -192,7 +235,8 @@ const stateToProps = (state) => {
 const dispatchToProps = (dispatch) => {
     return {
         addItem: (item) => dispatch(actions.addItem(item)),
-        fetchItems: (params) => dispatch(actions.fetchItems(params))
+        fetchItems: (params) => dispatch(actions.fetchItems(params)),
+        submitOrder: (order) => dispatch(actions.submitOrder(order))
         // changeCenter: (center) => dispatch(actions.changeCenter(center))
     }
 }
