@@ -161,7 +161,9 @@ class Results extends Component {
                 </div>  
                 <Modal bsSize="sm" show={this.state.showModal} onHide={ () => {this.setState({showModal:false})} }>
                     <Modal.Body style={localStyle.modal}>
-                        <h2>This is a modal</h2>
+                        <h2>Purchase Item</h2>
+                        <textarea placeholder="Enter Message Here" className="form-control"></textarea>
+                        <button className="btn btn-success btn-fill">Purchase!</button>
                     </Modal.Body>
                 </Modal>
 
