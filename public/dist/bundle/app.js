@@ -7984,7 +7984,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
 
 	LOCATION_CHANGED: 'LOCATION_CHANGED',
-	ITEM_ADDED: 'ITEM_ADDED'
+	ITEM_ADDED: 'ITEM_ADDED',
+	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED'
 	// USERS_RECEIVED: 		'USERS_RECEIVED',
 	// USER_CREATED: 			'USER_CREATED',
 	// USER_LOGGED_IN: 		'USER_LOGGED_IN',
@@ -13270,6 +13271,14 @@ exports.default = {
 		return {
 			type: _constants2.default.LOCATION_CHANGED,
 			data: location
+		};
+	},
+
+	//NEED TO CALL ASYNCHRONOUS ACTION, BECAUSE OF API CALL FOR CURRENT USER
+	currentUser: function currentUser() {
+		console.log('GET CURRENT USER');
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.get('/auth/currentUser', null, _constants2.default.CURRENT_USER_RECEIVED));
 		};
 	}
 
@@ -30642,7 +30651,8 @@ exports.default = {
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
 			user: _reducers.userReducer,
 			item: _reducers.itemReducer,
-			map: _reducers.mapReducer
+			map: _reducers.mapReducer,
+			account: _reducers.accountReducer
 		});
 
 		if (initialState) {
@@ -31238,7 +31248,7 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.mapReducer = exports.itemReducer = exports.userReducer = undefined;
+exports.accountReducer = exports.mapReducer = exports.itemReducer = exports.userReducer = undefined;
 
 var _userReducer = __webpack_require__(193);
 
@@ -31252,14 +31262,21 @@ var _mapReducer = __webpack_require__(195);
 
 var _mapReducer2 = _interopRequireDefault(_mapReducer);
 
+var _accountReducer = __webpack_require__(430);
+
+var _accountReducer2 = _interopRequireDefault(_accountReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Export your reducers here
+* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
 
 exports.userReducer = _userReducer2.default;
 exports.itemReducer = _itemReducer2.default;
-exports.mapReducer = _mapReducer2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                           	Export your reducers here
-                                           * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-                                           */
+exports.mapReducer = _mapReducer2.default;
+exports.accountReducer = _accountReducer2.default;
 
 /***/ }),
 /* 193 */
@@ -44491,7 +44508,7 @@ exports.Results = _Results2.default;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -44517,97 +44534,105 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Search = function (_Component) {
-  _inherits(Search, _Component);
+	_inherits(Search, _Component);
 
-  function Search() {
-    _classCallCheck(this, Search);
+	function Search() {
+		_classCallCheck(this, Search);
 
-    var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
-    _this.state = {
-      map: null,
-      center: null
-    };
-    return _this;
-  }
+		_this.state = {
+			map: null,
+			center: null
+		};
+		return _this;
+	}
 
-  _createClass(Search, [{
-    key: 'centerChanged',
-    value: function centerChanged(center) {
-      console.log('centerChanged' + JSON.stringify(center));
-      // let updated = Object.assign({}, this.state.center)
-      //       updated = center
-      // this.setState({
-      //           center: updated
-      // })
+	_createClass(Search, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.props.currentUser();
+		}
+	}, {
+		key: 'centerChanged',
+		value: function centerChanged(center) {
+			console.log('centerChanged' + JSON.stringify(center));
+			// let updated = Object.assign({}, this.state.center)
+			//       updated = center
+			// this.setState({
+			//           center: updated
+			// })
 
-      this.props.locationChanged(center);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+			this.props.locationChanged(center);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-      // const markers = [
-      //     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
-      //     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
-      // ]
+			// const markers = [
+			//     {id:1, key:'1', defaultAnimation:2, label:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}},
+			//     {id:2, key:'2', defaultAnimation:2, label:'Sofa', position:{lat:40.7124017, lng:-73.9896719}}
+			// ]
 
-      var items = this.props.item.all || [];
+			var items = this.props.item.all || [];
 
-      var markers = [];
-      items.forEach(function (item, i) {
-        // {id:'1', key:'1', price:10, name:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}}
-        var marker = {
-          key: item.id,
-          label: item.name,
-          position: item.position,
-          defaultAnimation: 2
-        };
+			var markers = [];
+			items.forEach(function (item, i) {
+				// {id:'1', key:'1', price:10, name:'Nike Jordans', position:{lat:40.7224017, lng:-73.9896719}}
+				var marker = {
+					key: item.id,
+					label: item.name,
+					position: item.position,
+					defaultAnimation: 2
+				};
 
-        markers.push(marker);
-      });
+				markers.push(marker);
+			});
 
-      return _react2.default.createElement(
-        'div',
-        { className: 'sidebar-wrapper' },
-        _react2.default.createElement(_presentation.Map, {
-          onMapReady: function onMapReady(map) {
-            if (_this2.state.map != null) return;
+			return _react2.default.createElement(
+				'div',
+				{ className: 'sidebar-wrapper' },
+				_react2.default.createElement(_presentation.Map, {
+					onMapReady: function onMapReady(map) {
+						if (_this2.state.map != null) return;
 
-            console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
-            _this2.setState({
-              map: map
-            });
-          },
+						console.log('OnMapReady: ' + JSON.stringify(map.getCenter()));
+						_this2.setState({
+							map: map
+						});
+					},
 
-          locationChanged: this.centerChanged.bind(this),
-          markers: markers,
-          zoom: 12
-          // center={{lat:40.7224017, lng:-73.9896719}}
-          , center: this.props.map.currentLocation,
-          containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
-          mapElement: _react2.default.createElement('div', { style: { height: 100 + 'vh' } }) })
-      );
-    }
-  }]);
+					locationChanged: this.centerChanged.bind(this),
+					markers: markers,
+					zoom: 12
+					// center={{lat:40.7224017, lng:-73.9896719}}
+					, center: this.props.map.currentLocation,
+					containerElement: _react2.default.createElement('div', { style: { height: 100 + '%' } }),
+					mapElement: _react2.default.createElement('div', { style: { height: 100 + 'vh' } }) })
+			);
+		}
+	}]);
 
-  return Search;
+	return Search;
 }(_react.Component);
 
 var stateToProps = function stateToProps(state) {
-  return {
-    item: state.item,
-    map: state.map
-  };
+	return {
+		item: state.item,
+		map: state.map
+	};
 };
 
 var dispatchToProps = function dispatchToProps(dispatch) {
-  return {
-    locationChanged: function locationChanged(location) {
-      return dispatch(_actions2.default.locationChanged(location));
-    }
-  };
+	return {
+		locationChanged: function locationChanged(location) {
+			return dispatch(_actions2.default.locationChanged(location));
+		},
+		currentUser: function currentUser() {
+			return dispatch(_actions2.default.currentUser());
+		}
+	};
 };
 
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search);
@@ -44622,15 +44647,20 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Search
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.TurboClient = undefined;
+exports.HTTPAsync = exports.TurboClient = undefined;
 
 var _TurboClient = __webpack_require__(411);
 
 var _TurboClient2 = _interopRequireDefault(_TurboClient);
 
+var _HTTPAsync = __webpack_require__(431);
+
+var _HTTPAsync2 = _interopRequireDefault(_HTTPAsync);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.TurboClient = _TurboClient2.default;
+exports.HTTPAsync = _HTTPAsync2.default;
 
 /***/ }),
 /* 411 */
@@ -46383,6 +46413,134 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Results);
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _constants = __webpack_require__(41);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+
+    currentUser: null
+};
+
+exports.default = function () {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+
+    var updated = Object.assign({}, state);
+    switch (action.type) {
+
+        case _constants2.default.CURRENT_USER_RECEIVED:
+            console.log('CURRENT_USER_RECEIVED: ' + JSON.stringify(action.data));
+            return updated;
+
+        default:
+            return updated;
+    }
+};
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _superagent = __webpack_require__(15);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+var _bluebird = __webpack_require__(16);
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// standard superagent get request:
+var getRequst = function getRequst(url, params) {
+	return new _bluebird2.default(function (resolve, reject) {
+		_superagent2.default.get(url).query(params).set('Accept', 'application/json').end(function (err, response) {
+			if (err) {
+				reject(err);
+				return;
+			}
+
+			var payload = response.body || response.text;
+			resolve(payload);
+		});
+	});
+};
+
+var postRequst = function postRequst(url, body) {
+	return new _bluebird2.default(function (resolve, reject) {
+		_superagent2.default.post(url).send(body).set('Accept', 'application/json').end(function (err, response) {
+			if (err) {
+				reject(err);
+				return;
+			}
+
+			var payload = response.body || response.text;
+			resolve(payload);
+		});
+	});
+};
+
+exports.default = {
+	post: function post(url, body, actionType) {
+		return function (dispatch) {
+			return postRequst(url, body).then(function (data) {
+				// console.log('DATA: ' + JSON.stringify(data))
+				if (actionType != null) {
+					dispatch({
+						type: actionType,
+						data: data
+					});
+				}
+
+				return data;
+			}).catch(function (err) {
+				throw err;
+			});
+		};
+	},
+
+	get: function get(url, params, actionType) {
+		return function (dispatch) {
+			return getRequst(url, params).then(function (data) {
+				// console.log('DATA: ' + JSON.stringify(data))
+				if (actionType != null) {
+					dispatch({
+						type: actionType,
+						data: data
+					});
+				}
+
+				return data;
+			}).catch(function (err) {
+				throw err;
+			});
+		};
+	}
+
+};
 
 /***/ })
 ],[166]);

@@ -13,6 +13,10 @@ class Search extends Component {
 		}
 	}
 
+	componentDidMount(){
+		this.props.currentUser()
+	}
+
 	centerChanged(center){
 		console.log('centerChanged' + JSON.stringify(center))
 		// let updated = Object.assign({}, this.state.center)
@@ -87,7 +91,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
 	return {
-        locationChanged: (location) => dispatch(actions.locationChanged(location))
+        locationChanged: (location) => dispatch(actions.locationChanged(location)),
+        currentUser: () => dispatch(actions.currentUser())
 	}
 }
 
