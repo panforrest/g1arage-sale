@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Item } from '../presentation'
 import { connect } from 'react-redux'
 import actions from '../../actions'
+import Dropzone from 'react-dropzone'
 
 class Results extends Component {
     constructor(){
@@ -36,6 +37,11 @@ class Results extends Component {
         //CALL ACTION
         this.props.addItem(newItem)
     }
+
+    uploadImage(files){
+        const image = files[0]
+        console.log('uploadImage: ' + image.name)
+    }
     
     render(){
 
@@ -60,7 +66,7 @@ class Results extends Component {
             
 
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-5">
 
                         <div className="card">
                             <div className="content">
@@ -73,6 +79,7 @@ class Results extends Component {
                                     <input onChange={this.updateItem.bind(this, 'price')} type="text" style={localStyle.input} className="form-control" placeholder="Price" />
                                     <hr />
                                     <div className="stats">
+                                        <Dropzone onDrop={this.uploadImage.bind(this)} className="btn btn-info btn-fill" style={{marginRight:16}}>Add Image</Dropzone>
                                         <button onClick={this.addItem.bind(this)} className="btn btn-success">Add Item</button> 
                                         
                                     </div>
