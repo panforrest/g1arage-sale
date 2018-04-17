@@ -11,6 +11,7 @@ router.post('/register', function(req, res){
     turbo.createUser(req.body)
     .then(data => {
     	req.vertexSession.user = {id: data.id}
+    	res.redirect('/')  //REDIRECT TO THE MAP AFER CREATE NEW USER
 
     	res.json({
     		confirmation: 'success',
