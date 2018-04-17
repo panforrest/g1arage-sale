@@ -46123,6 +46123,10 @@ var _reactDropzone = __webpack_require__(433);
 
 var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
+var _turbo = __webpack_require__(412);
+
+var _turbo2 = _interopRequireDefault(_turbo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46162,22 +46166,54 @@ var Results = function (_Component) {
     }, {
         key: 'addItem',
         value: function addItem() {
-            console.log('ADD ITEM: ' + JSON.stringify(this.state.item));
+            if (this.props.account.currentUser == null) {
+                alert('Please log in or register to sell items');
+                return;
+            }
 
-            var newItem = Object.assign({}, this.state.item);
-            var len = this.props.item.all.length + 1;
-            newItem['id'] = len.toString();
-            // newItem['key'] = '100'
-            // newItem['defaultAnimation'] = 2
-            newItem['position'] = this.props.map.currentLocation;
-            //CALL ACTION
-            this.props.addItem(newItem);
+            var currentUser = this.props.account.currentUser;
+            var updated = Object.assign({}, this.state.item);
+            updated['seller'] = {
+                id: currentUser.id,
+                username: currentUser.username,
+                image: currentUser.image || ''
+            };
+
+            console.log('ADD ITEM: ' + JSON.stringify(updated));
+
+            // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+
+            // let newItem = Object.assign({}, this.state.item)
+            // const len = this.props.item.all.length+1
+            // newItem['id'] = len.toString()
+            // // newItem['key'] = '100'
+            // // newItem['defaultAnimation'] = 2
+            // newItem['position'] = this.props.map.currentLocation
+            // //CALL ACTION
+            // this.props.addItem(newItem)
         }
     }, {
         key: 'uploadImage',
         value: function uploadImage(files) {
+            var _this2 = this;
+
             var image = files[0];
             console.log('uploadImage: ' + image.name);
+            var turboClient = (0, _turbo2.default)({
+                site_id: '5a104f65eaac0e0014b0f822'
+            });
+
+            turboClient.uploadFile(image).then(function (data) {
+                // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+                // console.log('FILE UPLOADED: ' + data.result.url)
+                var updated = Object.assign({}, _this2.state.item);
+                updated['image'] = data.result.url;
+                _this2.setState({
+                    item: updated
+                });
+            }).catch(function (err) {
+                console.log('UPLOAD ERROR: ' + err.message);
+            });
         }
     }, {
         key: 'render',
@@ -46222,6 +46258,7 @@ var Results = function (_Component) {
                                     ),
                                     _react2.default.createElement('input', { onChange: this.updateItem.bind(this, 'label'), type: 'text', style: localStyle.input, className: 'form-control', placeholder: 'Name' }),
                                     _react2.default.createElement('input', { onChange: this.updateItem.bind(this, 'price'), type: 'text', style: localStyle.input, className: 'form-control', placeholder: 'Price' }),
+                                    this.state.item.image == null ? null : _react2.default.createElement('img', { src: this.state.item.image + '=s120-c' }),
                                     _react2.default.createElement('hr', null),
                                     _react2.default.createElement(
                                         'div',
@@ -46259,7 +46296,8 @@ var localStyle = {
 var stateToProps = function stateToProps(state) {
     return {
         item: state.item,
-        map: state.map
+        map: state.map,
+        account: state.account
     };
 };
 

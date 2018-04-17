@@ -3,6 +3,7 @@ import { Item } from '../presentation'
 import { connect } from 'react-redux'
 import actions from '../../actions'
 import Dropzone from 'react-dropzone'
+import turbo from 'turbo360'
 
 class Results extends Component {
     constructor(){
@@ -26,21 +27,53 @@ class Results extends Component {
     }
 
     addItem(){
-        console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+        if (this.props.account.currentUser == null){
+            alert('Please log in or register to sell items')
+            return
+        }
 
-        let newItem = Object.assign({}, this.state.item)
-        const len = this.props.item.all.length+1
-        newItem['id'] = len.toString()
-        // newItem['key'] = '100'
-        // newItem['defaultAnimation'] = 2
-        newItem['position'] = this.props.map.currentLocation
-        //CALL ACTION
-        this.props.addItem(newItem)
+        const currentUser = this.props.account.currentUser
+        let updated = Object.assign({}, this.state.item)
+        updated['seller'] = {
+            id: currentUser.id,
+            username: currentUser.username,
+            image: currentUser.image || ''
+        }
+
+        console.log('ADD ITEM: ' + JSON.stringify(updated))
+
+        // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
+
+        // let newItem = Object.assign({}, this.state.item)
+        // const len = this.props.item.all.length+1
+        // newItem['id'] = len.toString()
+        // // newItem['key'] = '100'
+        // // newItem['defaultAnimation'] = 2
+        // newItem['position'] = this.props.map.currentLocation
+        // //CALL ACTION
+        // this.props.addItem(newItem)
     }
 
     uploadImage(files){
         const image = files[0]
         console.log('uploadImage: ' + image.name)
+        const turboClient = turbo({
+            site_id: '5a104f65eaac0e0014b0f822'
+        })
+
+        turboClient.uploadFile(image)
+        .then(data => {
+            // console.log('FILE UPLOADED: ' + JSON.stringify(data))
+            // console.log('FILE UPLOADED: ' + data.result.url)
+            let updated = Object.assign({}, this.state.item)
+            updated['image'] = data.result.url
+            this.setState({
+                item: updated
+            })
+        })
+        .catch(err => {
+            console.log('UPLOAD ERROR: ' + err.message)
+        })
     }
     
     render(){
@@ -77,6 +110,11 @@ class Results extends Component {
 
                                     <input onChange={this.updateItem.bind(this, 'label')} type="text" style={localStyle.input} className="form-control" placeholder="Name" />
                                     <input onChange={this.updateItem.bind(this, 'price')} type="text" style={localStyle.input} className="form-control" placeholder="Price" />
+                                    { (this.state.item.image == null) ? null: <img src={this.state.item.image+'=s120-c'} />
+
+
+                                    }
+
                                     <hr />
                                     <div className="stats">
                                         <Dropzone onDrop={this.uploadImage.bind(this)} className="btn btn-info btn-fill" style={{marginRight:16}}>Add Image</Dropzone>
@@ -104,7 +142,8 @@ const localStyle = {
 const stateToProps = (state) => {
     return {
         item: state.item,
-        map: state.map  
+        map: state.map,
+        account: state.account   
     }
 }
 
