@@ -10,6 +10,8 @@ router.post('/register', function(req, res){
 
     turbo.createUser(req.body)
     .then(data => {
+    	req.vertexSession.user = {id: data.id}
+
     	res.json({
     		confirmation: 'success',
     		data: data
@@ -23,6 +25,30 @@ router.post('/register', function(req, res){
 
 	})
 	
+})
+
+router.get('/currentUser', function(req, res){
+	//CHECK THE SESSION:
+	if (req.vertexSession == null){
+		res.json({
+			confirmation: 'success',
+			user: null
+		})
+		return
+	}
+
+    if (req.vertexSession.user == null){
+		res.json({
+			confirmation: 'success',
+			user: null
+		})
+		return
+	}
+
+	res.json({
+		confirmation: 'success',
+		user: req.vertexSession.user 
+	})
 })
 
 module.exports = router
