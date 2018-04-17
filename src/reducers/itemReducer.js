@@ -23,6 +23,11 @@ export default (state=initialState, action) => {
             updated['all'] = all
             return updated
 
+        case constants.ITEMS_RECEIVED:
+            // console.log('ITEMS_RECEIVED: ' + JSON.stringify(action.data))
+            updated['all'] = action.data.data
+            return updated
+
 		default: 
 		    return updated
 	}

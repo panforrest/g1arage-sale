@@ -1,18 +1,27 @@
+//<div>{center.lat}</div>
 import React, { Component } from 'react'
 import { Item } from '../presentation'
 import { connect } from 'react-redux'
 import actions from '../../actions'
 import Dropzone from 'react-dropzone'
 import turbo from 'turbo360'
+import { Modal } from 'react-bootstrap'
 
 class Results extends Component {
     constructor(){
-    	super()
-    	this.state = {
+        super()
+        this.state = {
+            showModal: false,
             item: {
                 // position:{lat:40.70224017, lng:-73.9796719}
             }
-    	}
+        }
+    }
+
+    componentDidMount(){
+        
+        console.log('componentDidMount: ')
+        this.props.fetchItems()
     }
 
     updateItem(attr, event){
@@ -34,6 +43,7 @@ class Results extends Component {
 
         const currentUser = this.props.account.currentUser
         let updated = Object.assign({}, this.state.item)
+        updated['position'] = this.props.map.currentLocation
         updated['seller'] = {
             id: currentUser.id,
             username: currentUser.username,
@@ -49,23 +59,22 @@ class Results extends Component {
             console.log('ERR: ' + err.message)
         })
 
-        // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
 
         // let newItem = Object.assign({}, this.state.item)
-        // const len = this.props.item.all.length+1
+     //    const len = this.props.item.all.length+1
         // newItem['id'] = len.toString()
         // // newItem['key'] = '100'
         // // newItem['defaultAnimation'] = 2
-        // newItem['position'] = this.props.map.currentLocation
+     //    newItem['position'] = this.props.map.currentLocation
         // //CALL ACTION
         // this.props.addItem(newItem)
     }
-
+    
     uploadImage(files){
         const image = files[0]
         console.log('uploadImage: ' + image.name)
         const turboClient = turbo({
-            site_id: '5a104f65eaac0e0014b0f822'
+            site_id: '5ac9207f3c62520014e7dff7'
         })
 
         turboClient.uploadFile(image)
@@ -82,7 +91,15 @@ class Results extends Component {
             console.log('UPLOAD ERROR: ' + err.message)
         })
     }
-    
+
+    onPurchase(item, event){
+        event.preventDefault()
+        this.setState({
+            showModal:true
+        })
+        console.log('onPurchase: ' + JSON.stringify(item))
+    }
+
     render(){
 
         // const items = [
@@ -91,19 +108,24 @@ class Results extends Component {
         // ]
 
         const items = this.props.item.all || []
+        // const center = this.props.map.center || []
+        // const lat = this.props.map.center.lat
+        // const list = this.props.item.map((item, i) => {
+        //     return (
+        //         <li key=i>{}</li>
+        //     )
+        // })
 
-    	return(
+        return(
             <div className="container-fluid">
                 <div className="row">
-
                     { items.map((item, i) => {
-                    	return <Item key={item.id} item={item} />
+                        return <Item key={item.id} onPurchase={this.onPurchase.bind(this, item)} item={item} />
                       })
-
                     }
-			                    
-                </div>			                
-            
+
+
+                </div>
 
                 <div className="row">
                     <div className="col-md-5">
@@ -115,12 +137,14 @@ class Results extends Component {
 
                                     <h3>Add Item</h3>
 
-                                    <input onChange={this.updateItem.bind(this, 'label')} type="text" style={localStyle.input} className="form-control" placeholder="Name" />
+
+                                    <input onChange={this.updateItem.bind(this, 'name')} type="text" style={localStyle.input} className="form-control" placeholder="Name" />
                                     <input onChange={this.updateItem.bind(this, 'price')} type="text" style={localStyle.input} className="form-control" placeholder="Price" />
                                     { (this.state.item.image == null) ? null: <img src={this.state.item.image+'=s120-c'} />
 
 
                                     }
+
 
                                     <hr />
                                     <div className="stats">
@@ -133,9 +157,18 @@ class Results extends Component {
                         </div>
 
                     </div>
-                </div>
-            </div>    
-    	)
+
+                </div>  
+                <Modal bsSize="sm" show={this.state.showModal} onHide={ () => {this.setState({showModal:false})} }>
+                    <Modal.Body style={localStyle.modal}>
+                        <h2>This is a modal</h2>
+                    </Modal.Body>
+                </Modal>
+
+
+
+            </div>
+        )
     }
 }
 
@@ -150,13 +183,15 @@ const stateToProps = (state) => {
     return {
         item: state.item,
         map: state.map,
-        account: state.account   
+        account: state.account       
     }
 }
 
 const dispatchToProps = (dispatch) => {
     return {
-        addItem: (item) => dispatch(actions.addItem(item))
+        addItem: (item) => dispatch(actions.addItem(item)),
+        fetchItems: (params) => dispatch(actions.fetchItems(params))
+        // changeCenter: (center) => dispatch(actions.changeCenter(center))
     }
 }
 
