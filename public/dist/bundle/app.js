@@ -8907,11 +8907,7 @@ function warning(message) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Map = exports.Item = exports.Footer = exports.Nav = undefined;
-
-var _Nav = __webpack_require__(208);
-
-var _Nav2 = _interopRequireDefault(_Nav);
+exports.Map = exports.Item = exports.Footer = undefined;
 
 var _Footer = __webpack_require__(209);
 
@@ -8927,10 +8923,9 @@ var _Map2 = _interopRequireDefault(_Map);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.Nav = _Nav2.default;
 exports.Footer = _Footer2.default;
 exports.Item = _Item2.default;
-exports.Map = _Map2.default;
+exports.Map = _Map2.default; // import Nav from './Nav'
 
 /***/ }),
 /* 70 */
@@ -32672,7 +32667,7 @@ var Home = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'main-panel' },
-					_react2.default.createElement(_presentation.Nav, null),
+					_react2.default.createElement(_containers.Nav, null),
 					_react2.default.createElement(
 						'div',
 						{ className: 'content' },
@@ -32690,161 +32685,7 @@ var Home = function (_Component) {
 exports.default = Home;
 
 /***/ }),
-/* 208 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (props) {
-
-    return _react2.default.createElement(
-        "nav",
-        { className: "navbar navbar-default" },
-        _react2.default.createElement(
-            "div",
-            { className: "container-fluid" },
-            _react2.default.createElement(
-                "div",
-                { className: "navbar-header" },
-                _react2.default.createElement(
-                    "button",
-                    { type: "button", className: "navbar-toggle" },
-                    _react2.default.createElement(
-                        "span",
-                        { className: "sr-only" },
-                        "Toggle navigation"
-                    ),
-                    _react2.default.createElement("span", { className: "icon-bar bar1" }),
-                    _react2.default.createElement("span", { className: "icon-bar bar2" }),
-                    _react2.default.createElement("span", { className: "icon-bar bar3" })
-                ),
-                _react2.default.createElement(
-                    "a",
-                    { className: "navbar-brand", href: "#" },
-                    "Dashboard"
-                )
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "collapse navbar-collapse" },
-                _react2.default.createElement(
-                    "ul",
-                    { className: "nav navbar-nav navbar-right" },
-                    _react2.default.createElement(
-                        "li",
-                        null,
-                        _react2.default.createElement(
-                            "a",
-                            { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown" },
-                            _react2.default.createElement("i", { className: "ti-panel" }),
-                            _react2.default.createElement(
-                                "p",
-                                null,
-                                "Stats"
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "li",
-                        { className: "dropdown" },
-                        _react2.default.createElement(
-                            "a",
-                            { href: "#", className: "dropdown-toggle", "data-toggle": "dropdown" },
-                            _react2.default.createElement("i", { className: "ti-bell" }),
-                            _react2.default.createElement(
-                                "p",
-                                { className: "notification" },
-                                "5"
-                            ),
-                            _react2.default.createElement(
-                                "p",
-                                null,
-                                "Notifications"
-                            ),
-                            _react2.default.createElement("b", { className: "caret" })
-                        ),
-                        _react2.default.createElement(
-                            "ul",
-                            { className: "dropdown-menu" },
-                            _react2.default.createElement(
-                                "li",
-                                null,
-                                _react2.default.createElement(
-                                    "a",
-                                    { href: "#" },
-                                    "Notification 1"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                null,
-                                _react2.default.createElement(
-                                    "a",
-                                    { href: "#" },
-                                    "Notification 2"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                null,
-                                _react2.default.createElement(
-                                    "a",
-                                    { href: "#" },
-                                    "Notification 3"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                null,
-                                _react2.default.createElement(
-                                    "a",
-                                    { href: "#" },
-                                    "Notification 4"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                null,
-                                _react2.default.createElement(
-                                    "a",
-                                    { href: "#" },
-                                    "Another notification"
-                                )
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "li",
-                        null,
-                        _react2.default.createElement(
-                            "a",
-                            { href: "#" },
-                            _react2.default.createElement("i", { className: "ti-settings" }),
-                            _react2.default.createElement(
-                                "p",
-                                null,
-                                "Settings"
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    );
-};
-
-/***/ }),
+/* 208 */,
 /* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44478,7 +44319,7 @@ var updaterMap = {}
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Results = exports.Search = undefined;
+exports.Nav = exports.Results = exports.Search = undefined;
 
 var _Search = __webpack_require__(409);
 
@@ -44488,17 +44329,20 @@ var _Results = __webpack_require__(429);
 
 var _Results2 = _interopRequireDefault(_Results);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Nav = __webpack_require__(432);
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * *
-	Export your container components here. The Users
-	container is just an example and you will likely
-	remove it in favor of your own containers. 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
+var _Nav2 = _interopRequireDefault(_Nav);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Search = _Search2.default;
 exports.Results = _Results2.default;
+exports.Nav = _Nav2.default; /* * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             	Export your container components here. The Users
+                             	container is just an example and you will likely
+                             	remove it in favor of your own containers. 
+                             * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             */
 
 /***/ }),
 /* 409 */
@@ -46446,6 +46290,7 @@ exports.default = function () {
 
         case _constants2.default.CURRENT_USER_RECEIVED:
             console.log('CURRENT_USER_RECEIVED: ' + JSON.stringify(action.data));
+            updated['currentUser'] = action.data.user;
             return updated;
 
         default:
@@ -46541,6 +46386,202 @@ exports.default = {
 	}
 
 };
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(67);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_Component) {
+	_inherits(Nav, _Component);
+
+	function Nav() {
+		_classCallCheck(this, Nav);
+
+		return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+	}
+
+	_createClass(Nav, [{
+		key: 'render',
+		value: function render() {
+
+			var currentUser = this.props.user.currentUser;
+			return _react2.default.createElement(
+				'nav',
+				{ className: 'navbar navbar-default' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'navbar-header' },
+						_react2.default.createElement(
+							'button',
+							{ type: 'button', className: 'navbar-toggle' },
+							_react2.default.createElement(
+								'span',
+								{ className: 'sr-only' },
+								'Toggle navigation'
+							),
+							_react2.default.createElement('span', { className: 'icon-bar bar1' }),
+							_react2.default.createElement('span', { className: 'icon-bar bar2' }),
+							_react2.default.createElement('span', { className: 'icon-bar bar3' })
+						),
+						_react2.default.createElement(
+							'a',
+							{ className: 'navbar-brand', href: '#' },
+							'Dashboard'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'collapse navbar-collapse' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'nav navbar-nav navbar-right' },
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
+									_react2.default.createElement('i', { className: 'ti-panel' }),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Stats'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								{ className: 'dropdown' },
+								_react2.default.createElement(
+									'a',
+									{ href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
+									_react2.default.createElement('i', { className: 'ti-bell' }),
+									_react2.default.createElement(
+										'p',
+										{ className: 'notification' },
+										'5'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Notifications'
+									),
+									_react2.default.createElement('b', { className: 'caret' })
+								),
+								_react2.default.createElement(
+									'ul',
+									{ className: 'dropdown-menu' },
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 1'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 2'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 3'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Notification 4'
+										)
+									),
+									_react2.default.createElement(
+										'li',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: '#' },
+											'Another notification'
+										)
+									)
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('i', { className: 'ti-settings' }),
+									currentUser == null ? null : _react2.default.createElement(
+										'p',
+										null,
+										'Welcome, ',
+										currentUser.username
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Nav;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+	return {
+		user: state.account
+	};
+};
+
+// const dispatchToProps = (dispatch) => {
+// 	return {
+//         // currentUser: () => dispatch(actions.currentUser())
+// 	}
+// }
+
+exports.default = (0, _reactRedux.connect)(stateToProps)(Nav);
 
 /***/ })
 ],[166]);
