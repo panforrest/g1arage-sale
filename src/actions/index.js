@@ -10,9 +10,8 @@ import { TurboClient, HTTPAsync } from '../utils'
 export default {
 
 	addItem: (item) => {
-		return {
-			type: constants.ITEM_ADDED,
-			data: item
+		return dispatch => {
+			return dispatch(HTTPAsync.post('/api/item', item, constants.ITEM_ADDED))
 		}
 	},
 

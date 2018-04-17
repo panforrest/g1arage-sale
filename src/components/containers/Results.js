@@ -40,7 +40,14 @@ class Results extends Component {
             image: currentUser.image || ''
         }
 
-        console.log('ADD ITEM: ' + JSON.stringify(updated))
+        // console.log('ADD ITEM: ' + JSON.stringify(updated))
+        this.props.addItem(updated)
+        .then(data => {
+            console.log('ITEM ADDED: ' + JSON.stringify(data))
+        }) 
+        .catch(err => {
+            console.log('ERR: ' + err.message)
+        })
 
         // console.log('ADD ITEM: ' + JSON.stringify(this.state.item))
 

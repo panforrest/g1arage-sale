@@ -4,6 +4,31 @@ const router = vertex.router()
 
 /*  This is a sample API route. */
 
+router.post('/:resource', function(req, res){
+	const resource = req.params.resource
+
+    turbo.create(resource, req.body)
+    .then(data => {
+    	res.json({
+    		confirmation: 'success',
+    		data: data
+    	})
+    })
+    .catch(err => {
+    	res.json({
+    		confirmation: 'fail',
+    		message: err.message
+    	})
+    })
+
+	// res.json({
+	// 	confirmation: 'success',
+	// 	resource: req.params.resource,
+	// 	query: req.query // from the url query string
+	// })
+})
+
+
 router.get('/:resource', function(req, res){
 	res.json({
 		confirmation: 'success',
