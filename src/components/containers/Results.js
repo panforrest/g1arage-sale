@@ -126,6 +126,18 @@ class Results extends Component {
 
         this.props.submitOrder(updated)
         .then(data => {
+            
+            const email = {
+                fromemail: 'guoqianp@gmail.com',
+                fromname: 'Garage Sale!',
+                subject: 'You got a Purchase Order',
+                content: updated.message,
+                recipient: 'guoqianp@gmail.com'
+            }
+
+            return this.props.sendEmail(email)
+        })
+        .then(data => {
             alert('Your order has been submitted')
             this.setState({
                 showModal: false
@@ -236,7 +248,8 @@ const dispatchToProps = (dispatch) => {
     return {
         addItem: (item) => dispatch(actions.addItem(item)),
         fetchItems: (params) => dispatch(actions.fetchItems(params)),
-        submitOrder: (order) => dispatch(actions.submitOrder(order))
+        submitOrder: (order) => dispatch(actions.submitOrder(order)),
+        sendEmail: (email) => dispatch(actions.sendEmail(email))
         // changeCenter: (center) => dispatch(actions.changeCenter(center))
     }
 }

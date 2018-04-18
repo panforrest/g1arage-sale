@@ -27,6 +27,12 @@ export default {
 		}
 	},
 
+	sendEmail: (email) => {
+		return dispatch => {
+			return dispatch(HTTPAsync.post('/email/send', email, null))
+		}
+	},
+
 	locationChanged: (location) => {
 		return {
 			type: constants.LOCATION_CHANGED,

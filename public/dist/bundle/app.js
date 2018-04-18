@@ -16290,6 +16290,12 @@ exports.default = {
 		};
 	},
 
+	sendEmail: function sendEmail(email) {
+		return function (dispatch) {
+			return dispatch(_utils.HTTPAsync.post('/email/send', email, null));
+		};
+	},
+
 	locationChanged: function locationChanged(location) {
 		return {
 			type: _constants2.default.LOCATION_CHANGED,
@@ -52886,6 +52892,17 @@ var Results = function (_Component) {
             console.log('submitOrder: ' + JSON.stringify(updated));
 
             this.props.submitOrder(updated).then(function (data) {
+
+                var email = {
+                    fromemail: 'guoqianp@gmail.com',
+                    fromname: 'Garage Sale!',
+                    subject: 'You got a Purchase Order',
+                    content: updated.message,
+                    recipient: 'guoqianp@gmail.com'
+                };
+
+                return _this3.props.sendEmail(email);
+            }).then(function (data) {
                 alert('Your order has been submitted');
                 _this3.setState({
                     showModal: false
@@ -53024,6 +53041,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
         },
         submitOrder: function submitOrder(order) {
             return dispatch(_actions2.default.submitOrder(order));
+        },
+        sendEmail: function sendEmail(email) {
+            return dispatch(_actions2.default.sendEmail(email));
         }
         // changeCenter: (center) => dispatch(actions.changeCenter(center))
     };
